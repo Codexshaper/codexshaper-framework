@@ -2073,7 +2073,8 @@ class Offcanvas extends Widget {
 			add_filter( 'nav_menu_link_attributes', array( $this, 'add_class_to_nav_menu_link' ) );
 			$menu_html = wp_nav_menu( $args );
 		}
-		echo "<div class='cxf--menu-content'>" . $menu_html . '</div>';
+		// PHPCS - escaped by WordPress with "wp_nav_menu".
+		echo "<div class='cxf--menu-content'>" . $menu_html /* phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped */ . '</div>';
 	}
 
 	/**

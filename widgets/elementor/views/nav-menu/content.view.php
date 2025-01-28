@@ -10,15 +10,15 @@
  */
 
 ?>
-<div <?php echo $wrapper; ?>>
+<div <?php echo wp_kses_post( $wrapper ?? '' ); ?>>
 	<?php if ($show_mobile_menu) : ?>
 		<button type="button" class="cxf-menu-hamburger" aria-label="Offcanvas Button" data-breakpoint="<?php echo esc_attr($breakpoint); ?>" data-id="<?php echo esc_attr($id); ?>">
-			<?php echo $menu_hamburger_icon; ?>
+			<?php echo wp_kses( $menu_hamburger_icon, cxf_get_svg_rules() ); ?>
 		</button>
 	<?php endif; ?>
 	<?php
 	// PHPCS - escaped by WordPress with "wp_nav_menu".
-	echo $menu_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped.
+	echo $menu_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	?>
 </div>
 <?php if ('yes' === $settings['show_mobile_menu']) : ?>

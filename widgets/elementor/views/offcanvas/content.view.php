@@ -10,7 +10,7 @@
  */
 
 ?>
-<div <?php echo $wrapper; ?>>
+<div <?php echo wp_kses_post( $wrapper ?? '' ); ?>>
 	<div class="cxf--offcanvas-style">"
 		<?php echo $render_header; ?>
 		<div class="cxf--offcanvas-content-wrap">

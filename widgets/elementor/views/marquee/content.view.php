@@ -10,7 +10,7 @@
  */
 
 ?>
-<div <?php echo $sliderWrapperAttributes; ?>>
+<div <?php echo wp_kses_post( $sliderWrapperAttributes ?? '' ); ?>>
 	<div class="swiper-wrapper">
 		<?php
 		foreach ($items as $key => $item) :
@@ -19,7 +19,7 @@
 				<div class="cxf--marquee-wrapper">
 					<?php if ($item['marquee_image'] && ! empty($item['marquee_image']['url'])) : ?>
 						<div class="cxf--marquee-image-wrapper">
-							<?php echo $marquee_size_image[$key]; ?>
+							<?php echo wp_kses_post( $marquee_size_image[$key] ?? '' ); ?>
 						</div>
 					<?php endif; ?>
 					<?php if ($item['marquee_text']) : ?>

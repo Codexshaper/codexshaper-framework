@@ -10,18 +10,18 @@
  */
 
 ?>
-<div <?php echo $button_wrapper; ?>>
-	<?php echo $button_opening_tag; ?>
+<div <?php echo wp_kses_post( $button_wrapper ?? '' ); ?>>
+	<?php echo wp_kses_post( $button_opening_tag ?? '' ); ?>
 	<?php if (empty($settings['cxf_button_icon_align']) || 'left' === $settings['cxf_button_icon_align']) : ?>
 		<span class="cxf--btn_icon">
-			<?php echo $icon_Html; ?>
+			<?php echo wp_kses( $icon_Html, cxf_get_svg_rules() ); ?>
 		</span>
 	<?php endif; ?>
-	<?php echo $settings['cxf_button_text']; ?>
+	<?php echo esc_html( $settings['cxf_button_text'] ); ?>
 	<?php if ('right' === $settings['cxf_button_icon_align']) : ?>
 		<span class="cxf--btn_icon">
-			<?php echo $icon_Html; ?>
+			<?php echo wp_kses( $icon_Html, cxf_get_svg_rules() ); ?>
 		</span>
 	<?php endif; ?>
-	<?php echo $button_closing_tag; ?>
+	<?php echo wp_kses_post( $button_closing_tag ?? '' ); ?>
 </div>

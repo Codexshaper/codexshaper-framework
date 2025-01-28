@@ -14,7 +14,7 @@
 	<a href="<?php echo esc_url($settings['header_logo_link']['url']); ?>">
 		<div class="cxf--logo-wrapper">
 			<?php if (! empty($settings['header_logo']['url'])) : ?>
-				<?php echo $logo_size_image; ?>
+				<?php echo wp_kses_post( $logo_size_image ?? '' ); ?>
 			<?php endif; ?>
 		</div>
 	</a>
@@ -26,7 +26,7 @@
 			endif;
 			if ($settings['close_icon_btn']) :
 			?>
-				<span class="cxf--icon"><?php echo $close_btn_icon; ?> </span>
+				<span class="cxf--icon"><?php echo wp_kses( $close_btn_icon , cxf_get_svg_rules() ); ?> </span>
 			<?php endif ?>
 		</button>
 	</div>
