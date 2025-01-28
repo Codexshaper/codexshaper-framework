@@ -1,0 +1,69 @@
+.cxf-post-grid-layout {
+    display: grid;
+    align-items: stretch;
+    column-gap: 30px;
+    row-gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.cxf-post-item {
+    background-color: #d2ccb4;
+    transition: all 300ms;
+}
+
+.cxf--post-card {
+    overflow: hidden;
+}
+
+.cxf-post-item .cxf--thumb-wrap {
+    overflow: hidden;
+}
+
+.cxf--post-card .cxf--meta-list, .cxf--tag-list, .cxf--tag-list .cxf--meta-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px;
+}
+
+.cxf-post-item .cxf--title {
+    color: #030611;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+    display: inline-block;
+    transition: all 300ms;
+    margin: 16px 0px 5px;
+}
+
+.cxf--post-meta-wrap, .cxf--tag-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cxf-post-item .cxf--meta-list, .cxf--tag-list{
+    border-radius: 40px;
+    padding: 5px 15px 5px 24px;
+    position: relative;
+    border: 1px solid #030611;
+    background-color: #ffffff;
+}
+
+.cxf--post-card .cxf--meta-list, .cxf--tag-list {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px;
+}
+
+.cxf--btn-arrow-right:hover {
+    color: #f7c600;
+}
+
+.cxf--btn-arrow-right {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1;
+    color: #ffffff;
+    transition: all 300ms;
+}

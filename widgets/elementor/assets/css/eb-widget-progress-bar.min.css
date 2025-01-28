@@ -1,0 +1,82 @@
+.progress-wrapper {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.progress-title {
+  position: relative;
+  left: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.progress-percentage {
+  right: 0;
+  font-size: 14px;
+  color: #333;
+  position: absolute;
+}
+
+.progress-container {
+  height: 30px;
+  background: #ddd;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.progress-bar-cxf-rainbow-animated {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet,
+    red
+  );
+  background-size: 700% 100%;
+  border-radius: 15px 0 0 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Initial width, will be animated */
+  animation: load 3s ease-out forwards,
+    rainbowAnimation 5s linear infinite alternate;
+}
+
+.progress-bar-cxf-animated {
+  height: 100%;
+  background-color: green;
+  border-radius: 15px 0 0 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  animation: load 3s ease-out forwards;
+}
+.progress-bar-gradient {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #2f5030);
+  border-radius: 15px 0 0 15px;
+
+  transition: width 0.4s ease;
+}
+
+@keyframes load {
+  0% {
+    width: 0%;
+  }
+}
+@keyframes rainbowAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}

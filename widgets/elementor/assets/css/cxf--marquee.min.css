@@ -1,0 +1,10 @@
+.cxf--marquee-slider{
+background: yellow;
+}
+
+.cxf--marquee-slider .cxf--marquee-wrapper {
+    display: flex;
+    gap: 20px;  
+    align-items: center;
+    justify-content: center;
+}

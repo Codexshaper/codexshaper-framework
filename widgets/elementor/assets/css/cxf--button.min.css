@@ -1,0 +1,555 @@
+
+
+.cxf--btn i {
+  transition: all 0.5s;
+}
+.cxf--btn a, .cxf--btn button {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 500;
+  transition: all 0.5s;
+  overflow: hidden;
+}
+.cxf--btn.icon-position-after i,
+.cxf--btn.icon-position-after svg {
+  order: 15;
+}
+@keyframes mask_animation {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+@keyframes mask_animation_2 {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+.cxf--btn.icon-position-after .cxf--btn-mask::after {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.cxf--btn-default {
+  padding: 17px 35px;
+  border: 1px solid #1c1d20;
+  overflow: hidden;
+  z-index: 0;
+}
+.cxf--btn-default:hover {
+  color: #1c1d20;
+}
+.cxf--btn-circle {
+  width: 140px;
+  height: 140px;
+  color: #1c1d20;
+  border-radius: 100%;
+  flex-direction: column;
+  background-color: #e8bf96;
+}
+@media only screen and (max-width: 1199px) {
+  .cxf--btn-circle {
+    width: 130px;
+    height: 130px;
+  }
+}
+.cxf--btn-circle:hover {
+  color: #fff;
+}
+.cxf--btn-oval {
+  color: #1c1d20;
+  border: 1px solid #1c1d20;
+  padding: 32px 52px;
+  border-radius: 50% 50% 50% 50%;
+}
+@media only screen and (max-width: 991px) {
+  .cxf--btn-oval {
+    padding: 30px;
+  }
+}
+.cxf--btn-oval:hover {
+  color: #e8bf96;
+}
+.cxf--btn-ellipse {
+  color: #1c1d20;
+  padding: 45px 45px;
+  position: relative;
+  background-color: #1c1d20;
+  border-radius: 100%;
+  border-top-left-radius: 200%;
+  border-bottom-right-radius: 200%;
+  z-index: 1;
+}
+.cxf--btn-ellipse:hover {
+  color: #ffbc7d;
+  background-color: #e8bf96;
+}
+.cxf--btn-ellipse:before {
+  position: absolute;
+  content: "";
+  width: calc(100% - 16px);
+  height: calc(100% - 2px);
+  background-color: #fff;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  border-top-left-radius: 200%;
+  border-bottom-right-radius: 200%;
+}
+.cxf--btn-square {
+  flex-direction: column;
+  color: #1c1d20;
+  text-align: center;
+  border: 1px solid currentColor;
+  height: 215px;
+  width: 215px;
+  padding: 20px;
+  z-index: 0;
+  transition: all 1.1s;
+}
+@media only screen and (max-width: 1199px) {
+  .cxf--btn-square {
+    width: 200px;
+    height: 200px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .cxf--btn-square {
+    width: 170px;
+    height: 170px;
+    font-size: 18px;
+  }
+}
+.cxf--btn-square:hover {
+  color: #e8bf96;
+}
+.cxf--btn-underline {
+  color: #1c1d20;
+  padding-bottom: 5px;
+  position: relative;
+}
+.cxf--btn-underline::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  left: 0;
+  bottom: 0;
+  background-color: #1c1d20;
+  transition: all 0.5s;
+}
+.cxf--btn-underline:hover {
+  color: #e8bf96;
+  fill: #e8bf96;
+}
+.cxf--btn-underline:hover::after {
+  width: 0%;
+}
+.cxf--btn-mask {
+  padding: 15px 30px;
+  position: relative;
+  overflow: hidden;
+  transition: all 1.1s;
+  border-radius: 5px;
+  color: #1c1d20;
+  border: 1px solid #1c1d20;
+  z-index: 1;
+}
+.cxf--btn-mask i,
+.cxf--btn-mask svg {
+  position: relative;
+  z-index: 1;
+}
+.cxf--btn-mask::after {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  color: #fff;
+  position: absolute;
+  content: attr(data-text);
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #1c1d20;
+  -webkit-mask: url(../images/mask-btn.png);
+  mask: url(../images/mask-btn.png);
+  -webkit-mask-size: 2300% 100%;
+  mask-size: 2300% 100%;
+  animation: mask_animation_2 0.7s steps(22) forwards;
+  padding: 15px 30px;
+}
+.cxf--btn-mask:hover {
+  color: #1c1d20;
+}
+.cxf--btn-mask:hover::after {
+  animation: mask_animation 0.7s steps(22) forwards;
+}
+.cxf--btn-effect-default:hover {
+  color: #1c1d20;
+  background-color: #fff;
+}
+.cxf--btn-effect-cross {
+  overflow: hidden;
+  position: relative;
+  transition: all 1.1s;
+}
+.cxf--btn-effect-cross::after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  height: 0%;
+  left: 50%;
+  top: 50%;
+  background-color: #1c1d20;
+  transform: translateX(-50%) translateY(-50%);
+  transition: all 0.75s;
+  opacity: 0.5;
+  z-index: -1;
+}
+.cxf--btn-effect-cross:hover {
+  color: #fff;
+  background-color: transparent;
+}
+.cxf--btn-effect-cross:hover::after {
+  height: 120%;
+  opacity: 1;
+}
+.cxf--btn-effect-divide {
+  overflow: hidden;
+  position: relative;
+  transition: all 1.1s;
+  z-index: 1;
+}
+.cxf--btn-effect-divide::after {
+  position: absolute;
+  content: "";
+  width: 0%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  background-color: #1c1d20;
+  transform: translateX(-50%) translateY(-50%);
+  transition: all 0.75s;
+  opacity: 0.5;
+  z-index: -1;
+}
+.cxf--btn-effect-divide:hover {
+  color: #fff;
+  background-color: transparent;
+}
+.cxf--btn-effect-divide:hover::after {
+  width: 120%;
+  opacity: 1;
+}
+.cxf--btn-effect-cropping {
+  overflow: hidden;
+  position: relative;
+  transition: all 1.1s;
+}
+.cxf--btn-effect-cropping::after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  height: 0%;
+  left: 50%;
+  top: 50%;
+  background-color: #1c1d20;
+  transform: translateX(-50%) translateY(-50%) rotate(25deg);
+  transition: all 0.75s;
+  opacity: 0.5;
+  z-index: -1;
+}
+.cxf--btn-effect-cropping:hover {
+  color: #fff;
+  background-color: transparent;
+}
+.cxf--btn-effect-cropping:hover::after {
+  height: 400%;
+  opacity: 1;
+}
+.cxf--btn-sliding-top {
+  position: relative;
+  transition: all 1.1s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+.cxf--btn-sliding-top:after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 100%;
+  z-index: -1;
+  content: "";
+  background-color: #1c1d20;
+  transition: all 1.1s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+.cxf--btn-sliding-top:hover {
+  color: #fff;
+  background-color: transparent;
+}
+.cxf--btn-sliding-top:hover::after {
+  top: 0;
+  bottom: auto;
+  height: 100%;
+}
+/* Slide Effect Bottom */
+.cxf--btn-sliding-bottom {
+  position: relative;
+  transition: all 1.1s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+.cxf--btn-sliding-bottom:after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 0;
+  width: 100%;
+  z-index: -1;
+  content: "";
+  background-color: #1c1d20;
+  transition: all 1.1s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+.cxf--btn-sliding-bottom:hover {
+  color: #fff;
+  background-color: transparent;
+}
+.cxf--btn-sliding-bottom:hover::after {
+  bottom: 0;
+  top: auto;
+  height: 100%;
+}
+
+
+.cxf--btn-sliding-left {
+  position: relative;
+  transition: all 1.1s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+.cxf--btn-sliding-left::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0;
+  z-index: -1;
+  content: "";
+  background-color: #1c1d20;
+  transition: all 1.1s cubic-bezier(0.42, 0, 0.58, 1) 0s;
+}
+.cxf--btn-sliding-left:hover {
+  color: #fff;
+  background-color: transparent;
+}
+.cxf--btn-sliding-left:hover::after {
+  left: 0;
+  right: auto;
+  width: 100%;
+}
+
+.cxf--btn-sliding-right {
+  position: relative;
+  transition: all 1.1s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+.cxf--btn-sliding-right::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  z-index: -1;
+  content: "";
+  background-color: #1c1d20;
+  transition: all 1.1s cubic-bezier(0.42, 0, 0.58, 1) 0s;
+}
+.cxf--btn-sliding-right:hover {
+  color: #fff;
+  background-color: transparent;
+}
+
+
+.cxf--btn-sliding-right:hover::after {
+  right: 0;
+  left: auto;
+  width: 100%;
+}
+.cxf--btn-border-cross {
+  overflow: hidden;
+  position: relative;
+  transition: all 1.1s;
+}
+.cxf--btn-border-cross::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  bottom: 100%;
+  left: 100%;
+  opacity: 0;
+  border-bottom: 1px solid #1c1d20;
+  border-left: 1px solid #1c1d20;
+  transition: all 0.75s;
+  z-index: -1;
+}
+.cxf--btn-border-cross::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 100%;
+  right: 100%;
+  opacity: 0;
+  border-top: 1px solid #1c1d20;
+  border-right: 1px solid #1c1d20;
+  transition: all 0.75s;
+  z-index: -1;
+}
+.cxf--btn-border-cross:hover {
+  border-color: transparent !important;
+  color: #1c1d20;
+}
+.cxf--btn-border-cross:hover::before {
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+}
+.cxf--btn-border-cross:hover::after {
+  top: 0;
+  right: 0;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+}
+.cxf--btn-parallal-border {
+  overflow: hidden;
+  position: relative;
+  transition: all 1.1s;
+}
+.cxf--btn-parallal-border::before {
+  position: absolute;
+  content: "";
+  width: 0%;
+  height: 0%;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  border-bottom: 1px solid #1c1d20;
+  border-left: 1px solid #1c1d20;
+  transition: all 0.75s;
+  z-index: -1;
+}
+.cxf--btn-parallal-border::after {
+  position: absolute;
+  content: "";
+  width: 0%;
+  height: 0%;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  border-top: 1px solid #1c1d20;
+  border-right: 1px solid #1c1d20;
+  transition: all 0.75s;
+  z-index: -1;
+}
+.cxf--btn-parallal-border:hover {
+  border-color: transparent !important;
+  color: #1c1d20;
+}
+.cxf--btn-parallal-border:hover::before {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+}
+.cxf--btn-parallal-border:hover::after {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.cxf--btn-fade-left:after {
+  content: "";
+  background: rgb(236, 233, 22);
+  position: absolute;
+  transition: all .9s ease 0s;
+  z-index: -1;
+  height: 100%;
+  left: -100%;
+  top: 0;
+  transform: skew(30deg);
+  transform-origin: top left;
+  width: 0;
+}
+.cxf--btn-fade-left:hover:after {
+  height: 100%;
+  width: 200%;
+}
+
+.cxf--btn-fade-right:after {
+  content: "";
+  background: rgb(236, 233, 22);
+  position: absolute;
+  transition: all .9s ease 0s;
+  z-index: -1;
+  height: 100%;
+  right: -60%;
+  top: 0;
+  transform: skew(30deg);
+  transform-origin: bottom right;
+  width: 0;
+}
+.cxf--btn-fade-right:hover:after {
+  height: 100%;
+  width: 160%;
+}
+
+
+/* Slide In Button Effect*/
+.cxf--btn-slide-in{
+  z-index: 2;
+  overflow: hidden;
+}
+.cxf--btn-slide-in:before{
+  content: "";
+  position: absolute;
+  height: 100%;
+  background-color: white;
+  width: 50%;
+  left:-100%;
+  border-left: 4px solid white;
+  transition: 0.5s;
+  z-index: -1;
+}
+.cxf--btn-slide-in:after{
+  content: "";
+  position: absolute;
+  height: 100%;
+  background-color: white;
+  width: 50%;
+  right: -100%;
+  transition: 0.5s;
+  z-index: -1;
+}
+.cxf--btn-slide-in:hover{
+  color:#FFC107;
+}
+.cxf--btn-slide-in:hover:before{
+  left:0;
+}
+.cxf--btn-slide-in:hover:after{
+  right:0;
+}

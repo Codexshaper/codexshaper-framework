@@ -1,0 +1,24 @@
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+
+.cxf--animation {
+  --text-color: 0, 0%, 0%;
+}
+
+.cxf-invert-line {
+  background-image: linear-gradient(
+    to right,
+    hsla(var(--text-color), 1) 50%,
+    hsla(var(--text-color), 0.3) 50%
+  );
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.cxf-reveal-line {
+  overflow: hidden;
+}

@@ -1,0 +1,44 @@
+.cxf-meta-list {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    gap: 20px;
+}
+
+.cxf-meta-list .cxf--item {
+    position: relative;
+}
+
+.cxf--item > a:has(::after) {
+    margin-right: 5px;
+}
+
+.cxf--item .cxf--meta-icon svg {
+    width: 16px;
+}
+
+/* .cxf--item:not(:last-child)::after {
+    position: absolute;
+    top: 0;
+    right: -10px;
+    height: 100%;
+    border-top: 0;
+    border-bottom: 0;
+    border-right: 0;
+    border-left-width: 1px;
+    border-style: solid;
+    border-color: black;
+} */
+
+.cxf--item-separator::after {
+    font-size: 42px;
+    position: relative;
+    top: 10px;
+}
+
+.cxf--meta-icon img.cxf--avatar {
+    width: 45px;
+    border-radius: 50%;
+    height: auto;
+}

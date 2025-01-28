@@ -1,0 +1,37 @@
+.subtitle {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+.subtitle i {
+    border-radius: 50%;
+    margin-right: 15px;
+    width: 100px;
+  }
+
+  .section-heading {
+    margin-bottom: 42px;
+    position: relative;
+    z-index: 2;
+}
+
+.section-title {
+  color: var(--dark);
+  font-size: 56px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@media (min-width: 1200px){
+  .description  {
+    margin-right: 3rem!important;
+    padding-right: 3rem !important;
+  }
+}
+
+@media (min-width: 1200px){
+  .section-heading {
+    padding-right: 3rem !important;
+  }
+}   

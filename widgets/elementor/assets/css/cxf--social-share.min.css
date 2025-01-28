@@ -1,0 +1,39 @@
+
+.cxf--social-share-wrapper {
+    display: flex;
+    gap: 20px;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.cxf--social-share-wrapper .cxf--social-share-content-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.cxf--social-share-wrapper .cxf--social-share-item {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.cxf--social-share-wrapper .cxf--social-share-item-icon svg {
+    width: 26px;
+    transition: all 0.5s;
+}
+.cxf--social-share-wrapper .cxf--social-share-item-icon i{
+    transition: all 0.5s;
+}
+
+.cxf--social-share-wrapper .cxf--social-share-item-icon {
+    background-color:white;
+    width: 41px;
+    height: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+    cursor: pointer;
+}

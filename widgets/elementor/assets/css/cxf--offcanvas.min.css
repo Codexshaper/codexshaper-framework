@@ -1,0 +1,175 @@
+/*----------------------------------------*/
+/* OFFCANVAS CSS START
+/*----------------------------------------*/
+
+.cxf-offcanvas-wrapper ul,
+.cxf-offcanvas-wrapper li {
+  list-style: none;
+  margin: 0;
+}
+
+.cdx-btn-open {
+  transition: all 0.5s;
+  width: 100%;
+}
+
+.cdx-btn-open svg {
+  transition: all 0.5s;
+}
+
+.cxf-offcanvas-wrapper .cxf--menu-content .cxf-menu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: unset;
+  align-items: unset;
+  width: 100%;
+}
+
+.cxf-offcanvas-wrapper .menu-item-has-children .sub-menu {
+  visibility: hidden;
+  width: 100%;
+  height: 0;
+  background: #fff;
+  transform: scaleY(0);
+  padding: 0;
+  padding-left: 0;
+  margin: 0;
+  opacity: 0;
+  flex: 0 0 100%;
+  transition: all 0.5s ease;
+  transform-origin: top center;
+}
+
+.cxf-offcanvas-wrapper .menu-item-has-children.open .sub-menu {
+  visibility: visible;
+  height: auto;
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.cxf-offcanvas-wrapper .cdx-close {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0C1A1A;
+  border: 1px solid #ffffff;
+  border-radius: 100px;
+  font-size: 20px;
+  transform: translate(0px, 2px);
+  background-color: #E2E2E2;
+  padding: 8px;
+}
+
+.cxf-offcanvas-wrapper {
+  list-style: none;
+  position: fixed;
+  width: 100%;
+  height: 0;
+  z-index: 99999999;
+  top: 0px;
+  right: 0;
+  background-color: #fff;
+  /* transform: translateX(100%); */
+  visibility: hidden;
+  transition: all 0.5s;
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+}
+
+.cxf-offcanvas-wrapper.show {
+  height: 100vh;
+  visibility: visible;
+  opacity: 1;
+  transition: all .5s;
+  /* transform: translateX(0); */
+}
+
+body:has(.cxf-offcanvas-wrapper.show){
+  display: contents;
+}
+
+.cxf-offcanvas-wrapper .cxf--social-items {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+  padding: 30px 0 0 0;
+}
+
+.cxf--offcanvas-style svg {
+  width: 32px;
+}
+
+.cxf--offcanvas-style {
+  transition: all 0.5s;
+}
+
+.cxf--offcanvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: aliceblue;
+  padding: 10px;
+}
+
+.cxf--offcanvas-content-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 100px 0 0 0;
+  gap: 500px;
+}
+
+.cxf-offcanvas-wrapper .cxf--cta-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 50px 0 0 0;
+}
+
+.cxf-offcanvas-wrapper .cxf--social-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.cxf-offcanvas-wrapper .cxf--icon svg {
+  width: 32px;
+  transition: all 0.5s;
+}
+
+.cxf-offcanvas-wrapper .cxf--close-btn {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.cxf-offcanvas-wrapper .cxf-menu-link {
+  display: flex;
+  align-items: center;
+  transition: all 0.5s;
+}
+
+.cxf-offcanvas-wrapper .cxf-menu-link:hover {
+  color: #F7C600;
+  transition: all 0.5s;
+
+}
+
+.cxf-offcanvas-wrapper .cxf-menu-link:hover .cxf-submenu-icon {
+  color: #F7C600;
+  transition: all 0.5s;
+
+}
+
+.cxf-offcanvas-wrapper .cxf--social-item:not(:last-child)::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 33px;
+  background: #c2c1c1;
+  position: absolute;
+  margin-left: 12px;
+}

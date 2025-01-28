@@ -1,0 +1,48 @@
+.cxf--post-navigation a, .cxf--post-navigation p{
+    margin: 0;
+    padding: 0;
+}
+.cxf--post-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ECEDE3;
+    padding: 30px;
+    margin-bottom: 70px;
+}
+
+.cxf--post-navigation .cxf--prev-link {
+    border-right: 1px solid rgba(4, 6, 24, 0.1);
+    padding-right: 70px;
+}
+
+.cxf--post-navigation .next-prev {
+    color: rgba(3, 6, 17, 0.3137254902);
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-block;
+    padding: 3px 8px;
+    margin-bottom: 5px;
+    border: 1px solid rgba(4, 6, 24, 0.1);
+    background: rgba(255, 255, 255, 0);
+    transition:all 0.5s
+}
+
+.cxf--post-navigation .cxf--post-title {
+    color: #040618;
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-block;
+    line-height: 1.2;
+    text-align: left;
+    transition:all 0.5s
+}
+
+.cxf--post-navigation .cxf--next-link {
+    text-align: right;
+}
+
+.cxf--post-navigation .next-prev:hover {
+    color: #030611;
+    background-color: #F7C600;
+}
