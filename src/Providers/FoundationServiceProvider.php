@@ -38,11 +38,9 @@ class FoundationServiceProvider extends ServiceProvider {
 		TaxonomyServiceProvider::class,
 		MetaBoxServiceProvider::class,
 		WidgetServiceProvider::class,
-		AnimationServiceProvider::class,
 		BuilderServiceProvider::class,
 		'plugins_loaded' => array(
 			ElementorServiceProvider::class,
-			ConsoleServiceProvider::class,
 		),
 	);
 

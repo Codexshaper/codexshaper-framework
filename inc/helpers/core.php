@@ -260,6 +260,10 @@ if ( ! function_exists( 'cxf_get_string_attributes' ) ) {
 	 */
 	function cxf_get_string_attributes( $attributes, $render = false ) {
 
+		if (! is_array( $attributes ) ) {
+			$attributes = (array) $attributes;
+		}
+
 		$attributes_html = implode( ' ', $attributes );
 
 		if ( $render ) {

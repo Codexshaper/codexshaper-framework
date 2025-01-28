@@ -1,420 +1,232 @@
 "use strict";
-
-/**
- * Initialize sliders when Elementor frontend initializes
- */
 const cxfSliderCallback = function () {
-  const elementorFrontendBase = elementorModules.frontend.handlers.Base;
-  const elementorHandler = elementorFrontend.elementsHandler;
-  const elementorHook = elementorFrontend.hooks;
-  const elementorUtils = elementorFrontend.utils;
-
-  const cxfSliderHandler = elementorFrontendBase.extend({
-    bindEvents() {
-      const elementType = this.getElementType();
-      this.setupSlider();
-      // Resize.
-      window.addEventListener("resize", this.setupSlider);
-    },
-    setupSlider() {
-      const sliderType = this.getElementSettings("cxf_slider_type");
-      switch (sliderType) {
-        case "swiper":
-          this.initSwiperSlider();
-          break;
-        default:
-          this.initSwiperSlider();
-          break;
-      }
-    },
-    async initSwiperSlider() {
-      if (this.sliderInstance) {
-        this.sliderInstance?.destroy(true, true);
-      }
-
-      if (this.thumbSliderInstance) {
-        this.thumbSliderInstance?.destroy(true, true);
-      }
-
-      this.sliderInstance = null;
-      this.thumbSliderInstance = null;
-
-      var swiperSlider = this.$element.find(".cxf--slider");
-      var swiperPrefix = swiperSlider.data("prefix") ?? "cxf";
-      var swiperThumbSlider = this.$element.find(".cxf--thumb-slider");
-      var swiperThumbPrefix = swiperThumbSlider.data("prefix");
-      var currentDevice = elementorFrontend.getCurrentDeviceMode();
-      var breakpoint =
-        elementorFrontend.breakpoints.getDeviceMinBreakpoint(currentDevice);
-      if (!swiperPrefix) {
-        swiperPrefix = "cxf";
-      }
-      if (!swiperThumbPrefix) {
-        swiperThumbPrefix = "cxf_thumb";
-      }
-      var options = this.getSwiperOptions(swiperPrefix);
-
-      // console.log(this.getID());
-      // console.log("Slider");
-      // console.log(options);
-      // console.log(options.breakpoints[breakpoint]);
-
-      let prevEl = this.$element.find(".cxf--arrow-prev");
-      let nextEl = this.$element.find(".cxf--arrow-next");
-
-      if (prevEl.hasClass("cxf--arrow-disabled")) {
-        prevEl.removeClass("cxf--arrow-disabled");
-      }
-
-      if (nextEl.hasClass("cxf--arrow-disabled")) {
-        nextEl.removeClass("cxf--arrow-disabled");
-      }
-
-      if (swiperSlider.hasClass("cxf--slider-disabled")) {
-        swiperSlider.removeClass("cxf--slider-disabled");
-      }
-
-      if (swiperThumbSlider.hasClass("cxf--thumb-slider-disabled")) {
-        swiperThumbSlider.removeClass("cxf--thumb-slider-disabled");
-      }
-
-      if (
-        !options?.breakpoints[breakpoint]?.navigation ||
-        false === options?.breakpoints[breakpoint]?.navigation?.enabled
-      ) {
-        if (prevEl.length > 0) {
-          prevEl.addClass("cxf--arrow-disabled");
+  let e = elementorModules.frontend.handlers.Base,
+    t = elementorFrontend.elementsHandler,
+    s = elementorFrontend.hooks;
+  elementorFrontend.utils;
+  let i = e.extend({
+      bindEvents() {
+        this.getElementType(),
+          this.setupSlider(),
+          window.addEventListener("resize", this.setupSlider);
+      },
+      setupSlider() {
+        let e = this.getElementSettings("cxf_slider_type");
+        this.initSwiperSlider();
+      },
+      async initSwiperSlider() {
+        this.sliderInstance && this.sliderInstance?.destroy(!0, !0),
+          this.thumbSliderInstance && this.thumbSliderInstance?.destroy(!0, !0),
+          (this.sliderInstance = null),
+          (this.thumbSliderInstance = null);
+        var e = this.$element.find(".cxf--slider"),
+          t = e.data("prefix") ?? "cxf",
+          s = this.$element.find(".cxf--thumb-slider"),
+          i = s.data("prefix"),
+          a = elementorFrontend.getCurrentDeviceMode(),
+          l = elementorFrontend.breakpoints.getDeviceMinBreakpoint(a);
+        t || (t = "cxf"), i || (i = "cxf_thumb");
+        var n = this.getSwiperOptions(t);
+        let o = this.$element.find(".cxf--arrow-prev"),
+          r = this.$element.find(".cxf--arrow-next");
+        o.hasClass("cxf--arrow-disabled") &&
+          o.removeClass("cxf--arrow-disabled"),
+          r.hasClass("cxf--arrow-disabled") &&
+            r.removeClass("cxf--arrow-disabled"),
+          e.hasClass("cxf--slider-disabled") &&
+            e.removeClass("cxf--slider-disabled"),
+          s.hasClass("cxf--thumb-slider-disabled") &&
+            s.removeClass("cxf--thumb-slider-disabled"),
+          (!n?.breakpoints[l]?.navigation ||
+            !1 === n?.breakpoints[l]?.navigation?.enabled) &&
+            (o.length > 0 && o.addClass("cxf--arrow-disabled"),
+            r.length > 0 && r.addClass("cxf--arrow-disabled"));
+        var d = elementorFrontend.utils.swiper;
+        let c = !0 === n?.breakpoints[l]?.enabled;
+        if (
+          (!c && e.length > 0 && e.addClass("cxf--slider-disabled"),
+          e.length > 0 && c)
+        ) {
+          var p = this.getSwiperThumbOptions(i);
+          let h = !0 === p?.breakpoints[l]?.enabled;
+          !h && s.length > 0 && s.addClass("cxf--thumb-slider-disabled"),
+            s.length > 0 && h
+              ? (this.thumbSliderInstance = await new d(s, p).then(
+                  async (t) =>
+                    (this.sliderInstance = await new d(e, n).then((e) => {
+                      (e.controller.control = t), (t.controller.control = e);
+                    }))
+                ))
+              : (this.sliderInstance = await new d(e, n));
         }
-        if (nextEl.length > 0) {
-          nextEl.addClass("cxf--arrow-disabled");
-        }
-      }
-
-      var Swiper = elementorFrontend.utils.swiper;
-      let is_enabled_slider =
-        true === options?.breakpoints[breakpoint]?.enabled;
-
-      if (!is_enabled_slider && swiperSlider.length > 0) {
-        swiperSlider.addClass("cxf--slider-disabled");
-      }
-
-      // console.log(currentDevice);
-      // console.log(breakpoint);
-      // console.log(options.breakpoints[breakpoint]);
-      if (swiperSlider.length > 0 && is_enabled_slider) {
-        var thumbOptions = this.getSwiperThumbOptions(swiperThumbPrefix);
-
-        // console.log("Thumbnail");
-        // console.log(thumbOptions);
-
-        let is_enabled_thumb_slider =
-          true === thumbOptions?.breakpoints[breakpoint]?.enabled;
-
-        if (!is_enabled_thumb_slider && swiperThumbSlider.length > 0) {
-          swiperThumbSlider.addClass("cxf--thumb-slider-disabled");
-        }
-
-        if (swiperThumbSlider.length > 0 && is_enabled_thumb_slider) {
-          this.thumbSliderInstance = await new Swiper(
-            swiperThumbSlider,
-            thumbOptions
-          ).then(
-            async (thumbInstance) =>
-              (this.sliderInstance = await new Swiper(
-                swiperSlider,
-                options
-              ).then((mainInstance) => {
-                mainInstance.controller.control = thumbInstance;
-                thumbInstance.controller.control = mainInstance;
-              }))
-          );
-        } else {
-          this.sliderInstance = await new Swiper(swiperSlider, options);
-        }
-      }
-    },
-    getSwiperOptions(prefix = "cxf") {
-      prefix = `${prefix}_`;
-      const elementSettings = this.getElementSettings();
-
-      var swiperOptions = {
-        loop: "yes" === elementSettings[`${prefix}loop`],
-        speed: elementSettings.cxf_speed ?? 500,
-        allowTouchMove: "yes" === elementSettings[`${prefix}allow_touch_move`],
-        slidesPerView: elementSettings[`${prefix}slides_per_view`] ?? "auto",
-        spaceBetween: elementSettings[`${prefix}space_between`] ?? 70,
-        effect: elementSettings[`${prefix}effect`] ?? "slide",
-        autoplay: "yes" === elementSettings[`${prefix}autoplay`],
-        direction: elementSettings[`${prefix}direction`] ?? "horizontal",
-        navigation: false,
-        pagination: false,
-        breakpoints: {},
-      };
-
-      let enable_slider = elementSettings[`${prefix}enable_slider`] ?? true;
-      swiperOptions.enabled = "yes" === enable_slider || true === enable_slider;
-      // Setup slide per show.
-      let slidesPerViewControl = `${prefix}slides_per_view`;
-      if ("custom" === swiperOptions.slidesPerView) {
-        swiperOptions.slidesPerView =
-          elementSettings[`${prefix}custom_slides_per_view`] ?? "auto";
-        slidesPerViewControl = `${prefix}custom_slides_per_view`;
-      }
-
-      // Setup autoplay.
-      if (true === swiperOptions.autoplay) {
-        swiperOptions.autoplay = {
-          delay: elementSettings[`${prefix}autoplay_delay`] ?? 3000,
-          disableOnInteraction:
-            "yes" === elementSettings[`${prefix}autoplay_interaction`],
-          reverseDirection:
-            "yes" === elementSettings[`${prefix}reverse_direction`],
+      },
+      getSwiperOptions(e = "cxf") {
+        e = `${e}_`;
+        let t = this.getElementSettings();
+        var s = {
+          loop: "yes" === t[`${e}loop`],
+          speed: t.cxf_speed ?? 500,
+          allowTouchMove: "yes" === t[`${e}allow_touch_move`],
+          slidesPerView: t[`${e}slides_per_view`] ?? "auto",
+          spaceBetween: t[`${e}space_between`] ?? 70,
+          effect: t[`${e}effect`] ?? "slide",
+          autoplay: "yes" === t[`${e}autoplay`],
+          direction: t[`${e}direction`] ?? "horizontal",
+          navigation: !1,
+          pagination: !1,
+          breakpoints: {},
         };
-      }
-
-      if ("yes" === elementSettings[`${prefix}mousewheel`]) {
-        swiperOptions.mousewheel = {
-          releaseOnEdges: true,
-        };
-      }
-
-      if ("yes" === elementSettings[`${prefix}navigation`]) {
-        swiperOptions.navigation = {
-          enabled: true,
-          prevEl: `.elementor-element-${this.getID()} .cxf--arrow-prev`,
-          nextEl: `.elementor-element-${this.getID()} .cxf--arrow-next`,
-        };
-      }
-
-      if ("yes" === elementSettings[`${prefix}pagination`]) {
-        swiperOptions.pagination = {
-          enabled: true,
-          el: `.elementor-element-${this.getID()} .swiper-pagination`,
-          clickable: true,
-          type: elementSettings[`${prefix}pagination_type`] ?? "bullets",
-        };
-
-        switch (swiperOptions.pagination.type) {
-          case "fraction":
-            swiperOptions.pagination.formatFractionCurrent = (num) =>
-              ("0" + num).slice(-2);
-            swiperOptions.pagination.formatFractionTotal = (num) =>
-              ("0" + num).slice(-2);
-            swiperOptions.pagination.renderFraction = (
-              currentClass,
-              totalClass
-            ) =>
-              `<span class="${currentClass}"></span>
+        let i = t[`${e}enable_slider`] ?? !0;
+        s.enabled = "yes" === i || !0 === i;
+        let a = `${e}slides_per_view`;
+        if (
+          ("custom" === s.slidesPerView &&
+            ((s.slidesPerView = t[`${e}custom_slides_per_view`] ?? "auto"),
+            (a = `${e}custom_slides_per_view`)),
+          !0 === s.autoplay &&
+            (s.autoplay = {
+              delay: t[`${e}autoplay_delay`] ?? 3e3,
+              disableOnInteraction: "yes" === t[`${e}autoplay_interaction`],
+              reverseDirection: "yes" === t[`${e}reverse_direction`],
+            }),
+          "yes" === t[`${e}mousewheel`] &&
+            (s.mousewheel = { releaseOnEdges: !0 }),
+          "yes" === t[`${e}navigation`] &&
+            (s.navigation = {
+              enabled: !0,
+              prevEl: `.elementor-element-${this.getID()} .cxf--arrow-prev`,
+              nextEl: `.elementor-element-${this.getID()} .cxf--arrow-next`,
+            }),
+          "yes" === t[`${e}pagination`])
+        )
+          switch (
+            ((s.pagination = {
+              enabled: !0,
+              el: `.elementor-element-${this.getID()} .swiper-pagination`,
+              clickable: !0,
+              type: t[`${e}pagination_type`] ?? "bullets",
+            }),
+            s.pagination.type)
+          ) {
+            case "fraction":
+              (s.pagination.formatFractionCurrent = (e) => ("0" + e).slice(-2)),
+                (s.pagination.formatFractionTotal = (e) => ("0" + e).slice(-2)),
+                (s.pagination.renderFraction = (
+                  e,
+                  t
+                ) => `<span class="${e}"></span>
                  <span class="mid-line"></span>
-                 <span class="${totalClass}"></span>`;
+                 <span class="${t}"></span>`);
+              break;
+            case "bullets":
+              "number" === t[`${e}pagination_bullets_type`] &&
+                (s.pagination.renderBullet = function (e, t) {
+                  return '<span class="' + t + '">' + (e + 1) + "</span>";
+                });
+          }
+        switch (
+          ("yes" === t[`${e}slideshow_lazyload`] &&
+            (s.lazy = { loadPrevNext: !0, loadPrevNextAmount: 1 }),
+          s.effect)
+        ) {
+          case "fade":
+            s.crossFade = "yes" === t[`${e}slideshow_lazyload`];
             break;
-          case "bullets":
-            if (
-              "number" === elementSettings[`${prefix}pagination_bullets_type`]
-            ) {
-              swiperOptions.pagination.renderBullet = function (
-                index,
-                className
-              ) {
-                return (
-                  '<span class="' + className + '">' + (index + 1) + "</span>"
-                );
-              };
-            }
-
+          case "coverflow":
+            (s.slideShadows = "yes" === t[`${e}slide_shadows`]),
+              (s.depth = t[`${e}coverflow_depth`] ?? 100),
+              (s.modifier = t[`${e}coverflow_modifier`] ?? 1),
+              (s.rotate = t[`${e}coverflow_rotate`] ?? 50),
+              (s.scale = t[`${e}coverflow_scale`] ?? 1),
+              (s.stretch = t[`${e}coverflow_stretch`] ?? 100);
             break;
+          case "coverflow":
+            (s.limitRotation = "yes" === t[`${e}flip_limit_rotation`]),
+              (s.slideShadows = "yes" === t[`${e}slide_shadows`]);
+            break;
+          case "cube":
+            (s.shadow = "yes" === t[`${e}cube_shadow`]),
+              (s.slideShadows = "yes" === t[`${e}slide_shadows`]),
+              (s.shadowOffset = t[`${e}cube_shadow_offset`] ?? 20),
+              (s.shadowScale = t[`${e}cube_shadow_scale`] ?? 0.94);
+            break;
+          case "cards":
+            (s.rotate = "yes" === t[`${e}cards_rotate`]),
+              (s.slideShadows = "yes" === t[`${e}slide_shadows`]),
+              (s.perSlideOffset = t[`${e}cards_per_slide_offsett`] ?? 8),
+              (s.perSlideRotate = t[`${e}cards_per_slide_rotate`] ?? 2);
         }
-      }
-
-      if ("yes" === elementSettings[`${prefix}slideshow_lazyload`]) {
-        swiperOptions.lazy = {
-          loadPrevNext: true,
-          loadPrevNextAmount: 1,
-        };
-      }
-
-      switch (swiperOptions.effect) {
-        case "fade":
-          swiperOptions.crossFade =
-            "yes" === elementSettings[`${prefix}slideshow_lazyload`];
-          break;
-
-        case "coverflow":
-          swiperOptions.slideShadows =
-            "yes" === elementSettings[`${prefix}slide_shadows`];
-          swiperOptions.depth =
-            elementSettings[`${prefix}coverflow_depth`] ?? 100;
-          swiperOptions.modifier =
-            elementSettings[`${prefix}coverflow_modifier`] ?? 1;
-          swiperOptions.rotate =
-            elementSettings[`${prefix}coverflow_rotate`] ?? 50;
-          swiperOptions.scale =
-            elementSettings[`${prefix}coverflow_scale`] ?? 1;
-          swiperOptions.stretch =
-            elementSettings[`${prefix}coverflow_stretch`] ?? 100;
-          break;
-        case "coverflow":
-          swiperOptions.limitRotation =
-            "yes" === elementSettings[`${prefix}flip_limit_rotation`];
-          swiperOptions.slideShadows =
-            "yes" === elementSettings[`${prefix}slide_shadows`];
-          break;
-        case "cube":
-          swiperOptions.shadow =
-            "yes" === elementSettings[`${prefix}cube_shadow`];
-          swiperOptions.slideShadows =
-            "yes" === elementSettings[`${prefix}slide_shadows`];
-          swiperOptions.shadowOffset =
-            elementSettings[`${prefix}cube_shadow_offset`] ?? 20;
-          swiperOptions.shadowScale =
-            elementSettings[`${prefix}cube_shadow_scale`] ?? 0.94;
-          break;
-
-        case "cards":
-          swiperOptions.rotate =
-            "yes" === elementSettings[`${prefix}cards_rotate`];
-          swiperOptions.slideShadows =
-            "yes" === elementSettings[`${prefix}slide_shadows`];
-          swiperOptions.perSlideOffset =
-            elementSettings[`${prefix}cards_per_slide_offsett`] ?? 8;
-          swiperOptions.perSlideRotate =
-            elementSettings[`${prefix}cards_per_slide_rotate`] ?? 2;
-          break;
-      }
-
-      swiperOptions.centeredSlides =
-        "yes" === elementSettings[`${prefix}centered_slides`];
-
-      const breakpoints = {};
-
-      const activeBreakpoints =
-        elementorFrontend.breakpoints.responsiveConfig.activeBreakpoints;
-
-      // const activeBreakpoints =
-      //   elementorFrontend.breakpoints.getActiveBreakpointsList();
-
-      // console.log(activeBreakpoints);
-      // console.log(elementorFrontend.breakpoints);
-      // console.log(elementorFrontend.breakpoints.getDesktopMinPoint());
-
-      for (let device in activeBreakpoints) {
-        let slidesToShow = elementSettings[`${slidesPerViewControl}_${device}`];
-
-        if (!slidesToShow) {
-          slidesToShow = elementSettings[slidesPerViewControl];
-        }
-
-        if (!slidesToShow) {
-          slidesToShow = "auto";
-        }
-
-        var navigation = swiperOptions.navigation ?? false;
-
-        if ("yes" === elementSettings[`${prefix}navigation_${device}`]) {
-          navigation = {
-            enabled: true,
-            prevEl: `.elementor-element-${this.getID()} .cxf--arrow-prev`,
-            nextEl: `.elementor-element-${this.getID()} .cxf--arrow-next`,
+        s.centeredSlides = "yes" === t[`${e}centered_slides`];
+        let l = {},
+          n = elementorFrontend.breakpoints.responsiveConfig.activeBreakpoints;
+        for (let o in n) {
+          let r = t[`${a}_${o}`];
+          r || (r = t[a]), r || (r = "auto");
+          var d = s.navigation ?? !1;
+          "yes" === t[`${e}navigation_${o}`] &&
+            (d = {
+              enabled: !0,
+              prevEl: `.elementor-element-${this.getID()} .cxf--arrow-prev`,
+              nextEl: `.elementor-element-${this.getID()} .cxf--arrow-next`,
+            });
+          var c = s.pagination ?? !1;
+          "yes" === t[`${e}pagination_${o}`] &&
+            (c = {
+              enabled: !0,
+              el: `.elementor-element-${this.getID()} .swiper-pagination`,
+              clickable: !0,
+              type: t[`${e}pagination_type`] ?? "bullets",
+            });
+          let p = elementorFrontend.breakpoints.getDeviceMinBreakpoint(o),
+            h = t[`${e}enable_slider_${o}`] ?? !0;
+          l[p] = {
+            slidesPerView: r,
+            navigation: d,
+            pagination: c,
+            enabled: "yes" === h || !0 === h,
           };
         }
-
-        var pagination = swiperOptions.pagination ?? false;
-
-        if ("yes" === elementSettings[`${prefix}pagination_${device}`]) {
-          pagination = {
-            enabled: true,
-            el: `.elementor-element-${this.getID()} .swiper-pagination`,
-            clickable: true,
-            type: elementSettings[`${prefix}pagination_type`] ?? "bullets",
-          };
-        }
-
-        let breakpoint =
-          elementorFrontend.breakpoints.getDeviceMinBreakpoint(device);
-        let enable_slider =
-          elementSettings[`${prefix}enable_slider_${device}`] ?? true;
-
-        // console.log(`${prefix}enable_slider_${device}`);
-        // console.log(elementSettings[`${prefix}enable_slider_${device}`]);
-        // console.log(enable_slider);
-        // console.log(device);
-
-        breakpoints[breakpoint] = {
-          slidesPerView: slidesToShow,
-          navigation: navigation,
-          pagination: pagination,
-          enabled: "yes" === enable_slider || true === enable_slider,
-        };
-      }
-
-      var defaultBreakpointValue =
-        elementorFrontend.breakpoints.getDesktopMinPoint();
-
-      breakpoints[defaultBreakpointValue] = {
-        enabled: swiperOptions.enabled ?? true,
-        slidesPerView: swiperOptions.slidesPerView,
-        navigation: swiperOptions.navigation ?? false,
-        pagination: swiperOptions.pagination ?? false,
-      };
-
-      swiperOptions.breakpoints = breakpoints;
-
-      return swiperOptions;
-    },
-
-    getSwiperThumbOptions(prefix = "cxf_thumb") {
-      const elementSettings = this.getElementSettings();
-      const swiperOptions = this.getSwiperOptions(prefix);
-      const thumbOptions = { ...swiperOptions };
-
-      prefix = `${prefix}_`;
-
-      thumbOptions.loopAdditionalSlides =
-        "custom" === elementSettings[`${prefix}loop_additional_slides`]
-          ? elementSettings[`${prefix}loop_additional_slides`]
-          : thumbOptions.slidesPerView;
-
-      if ("custom" === thumbOptions.loopAdditionalSlides) {
-        thumbOptions.loopAdditionalSlides =
-          elementSettings[`${prefix}custom_loop_additional_slides`] ??
-          thumbOptions.slidesPerView;
-      }
-      thumbOptions.watchSlidesProgress =
-        "yes" === elementSettings[`${prefix}watch_slides_progress`];
-      thumbOptions.slideToClickedSlide =
-        "yes" === elementSettings[`${prefix}slide_to_clicked_slide`];
-
-      return thumbOptions;
-    },
-  });
-
-  const cxfSliderAction = ($element) => {
-    elementorHandler.addHandler(cxfSliderHandler, {
-      $element,
-    });
-  };
-
-  const sliderWidgets = elementorHook.applyFilters("cxf/widgets/sliders", {
-    "cxf--portfolio": ["skin-portfolio-one", "skin-portfolio-two"],
-  });
-
-  for (const [widget, skins] of Object.entries(sliderWidgets)) {
-    elementorHook.addAction(
-      `frontend/element_ready/${widget}.default`,
-      cxfSliderAction
-    );
-
-    if (skins.length > 0) {
-      skins.forEach((skin) => {
-        elementorHook.addAction(
-          `frontend/element_ready/${widget}.${skin}`,
-          cxfSliderAction
+        return (
+          (l[elementorFrontend.breakpoints.getDesktopMinPoint()] = {
+            enabled: s.enabled ?? !0,
+            slidesPerView: s.slidesPerView,
+            navigation: s.navigation ?? !1,
+            pagination: s.pagination ?? !1,
+          }),
+          (s.breakpoints = l),
+          s
         );
-      });
-    }
-  }
+      },
+      getSwiperThumbOptions(e = "cxf_thumb") {
+        let t = this.getElementSettings(),
+          s = this.getSwiperOptions(e),
+          i = { ...s };
+        return (
+          (e = `${e}_`),
+          (i.loopAdditionalSlides =
+            "custom" === t[`${e}loop_additional_slides`]
+              ? t[`${e}loop_additional_slides`]
+              : i.slidesPerView),
+          "custom" === i.loopAdditionalSlides &&
+            (i.loopAdditionalSlides =
+              t[`${e}custom_loop_additional_slides`] ?? i.slidesPerView),
+          (i.watchSlidesProgress = "yes" === t[`${e}watch_slides_progress`]),
+          (i.slideToClickedSlide = "yes" === t[`${e}slide_to_clicked_slide`]),
+          i
+        );
+      },
+    }),
+    a = (e) => {
+      t.addHandler(i, { $element: e });
+    },
+    l = s.applyFilters("cxf/widgets/sliders", {
+      "cxf--portfolio": ["skin-portfolio-one", "skin-portfolio-two"],
+    });
+  for (let [n, o] of Object.entries(l))
+    s.addAction(`frontend/element_ready/${n}.default`, a),
+      o.length > 0 &&
+        o.forEach((e) => {
+          s.addAction(`frontend/element_ready/${n}.${e}`, a);
+        });
 };
-
 window.addEventListener("elementor/frontend/init", cxfSliderCallback);
-
-// window.addEventListener("resize", cxfSliderCallback);

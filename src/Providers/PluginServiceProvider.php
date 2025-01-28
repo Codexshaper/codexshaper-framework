@@ -127,10 +127,6 @@ class PluginServiceProvider extends ServiceProvider {
 				'path' => '',
 			),
 			array(
-				'name' => 'codestar-framework',
-				'path' => 'lib/codestar-framework',
-			),
-			array(
 				'name' => 'general',
 				'path' => 'inc/helpers',
 			),
