@@ -11,28 +11,28 @@
 
 ?>
 <div <?php echo wp_kses_post( $wrapper_attr ); ?>>
-	<?php if (! empty($title_html)) : ?>
+	<?php if ( ! empty( $title_html ) ) : ?>
 		<?php wp_kses_post( $title_html ); ?>
 	<?php endif; ?>
 
 	<div <?php echo wp_kses_post( $content_wrapper_attr ); ?>>
-		<?php foreach ($social_share_items as $key => $item) : ?>
+		<?php foreach ( $social_share_items as $key => $item ) : ?>
 			<div <?php echo wp_kses_post( $item['wrapper_attr'] ); ?>>
 				<div <?php echo wp_kses_post( $item['item_attr'] ); ?>>
-					<?php if ($item['has_icon']) : ?>
+					<?php if ( $item['has_icon'] ) : ?>
 						<span class="cxf--social-share-item-icon">
-							<?php echo wp_kses( $share_icons[$key], cxf_get_svg_rules() ); ?>
+							<?php echo wp_kses( $share_icons[ $key ], cxf_get_svg_rules() ); ?>
 						</span>
 					<?php endif; ?>
-					<?php if (($item['is_show_label']) || ($item['has_counter'])) : ?>
+					<?php if ( ( $item['is_show_label'] ) || ( $item['has_counter'] ) ) : ?>
 						<div class="cxf--social-share-item-content">
-							<?php if ($item['is_show_label']) : ?>
+							<?php if ( $item['is_show_label'] ) : ?>
 								<span class="cxf--social-share-item-title">
-									<?php echo $item['text'] ? esc_html($item['text']) : wp_kses_post($item['title']); ?>
+									<?php echo $item['text'] ? esc_html( $item['text'] ) : wp_kses_post( $item['title'] ); ?>
 								</span>
 							<?php endif; ?>
-							<?php if ($item['has_counter']) : ?>
-								<span class="cxf--social-share-item-counter" data-counter="<?php echo esc_attr($item['network_name']); ?>"></span>
+							<?php if ( $item['has_counter'] ) : ?>
+								<span class="cxf--social-share-item-counter" data-counter="<?php echo esc_attr( $item['network_name'] ); ?>"></span>
 							<?php endif; ?>
 						</div>
 					<?php endif ?>

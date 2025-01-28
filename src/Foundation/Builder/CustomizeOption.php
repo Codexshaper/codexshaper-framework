@@ -28,12 +28,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since      1.0.0
  */
 class CustomizeOption {
-    
-    public static function instance() {
-        return new self();
-    }
 
-    public static function build($key, $params = array()) {
-        
-    }
+	public static function instance() {
+		return new self();
+	}
+
+	public static function build( $key, $params = array() ) {
+	}
 }

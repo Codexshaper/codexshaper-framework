@@ -18,10 +18,13 @@ use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Widget_Base;
 
-if (! defined('ABSPATH')) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * Skin_testimonial_Five Class.
+ *
  * @category   Class
  * @package    CodexShaperFramework
  * @author     CodexShaper <info@codexshaper.com>
@@ -29,8 +32,7 @@ if (! defined('ABSPATH')) exit; // Exit if accessed directly
  * @link       https://github.com/codexshaper/codexshaper-framework
  * @since      1.0.0
  */
-class Skin_Testimonial_Five extends Skin_Testimonial_Base
-{
+class Skin_Testimonial_Five extends Skin_Testimonial_Base {
 
 	/**
 	 * Get skin ID.
@@ -41,8 +43,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 	 * @access public
 	 * @abstract
 	 */
-	public function get_id()
-	{
+	public function get_id() {
 		return 'skin-testimonial-five';
 	}
 
@@ -55,9 +56,8 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 	 * @access public
 	 * @abstract
 	 */
-	public function get_title()
-	{
-		return __('Testimonial Five', 'codexshaper-framework');
+	public function get_title() {
+		return __( 'Testimonial Five', 'codexshaper-framework' );
 	}
 
 	/**
@@ -73,9 +73,8 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 	 * @since 1.0.0
 	 * @access protected
 	 */
-	protected function _register_controls_actions()
-	{
-		add_action('elementor/element/cxf--eb-widget-testimonial-slider/styling_section/after_section_end', [$this, 'register_style_sections']);
+	protected function _register_controls_actions() {
+		add_action( 'elementor/element/cxf--eb-widget-testimonial-slider/styling_section/after_section_end', array( $this, 'register_style_sections' ) );
 	}
 
 	/**
@@ -87,24 +86,23 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 	 * @param Widget_Base $widget The widget object that is being injected.
 	 * @return void
 	 */
-	public function register_style_sections(Widget_Base $widget)
-	{
+	public function register_style_sections( Widget_Base $widget ) {
 		$this->parent = $widget;
 
 		$this->start_controls_section(
 			'styling_section_05',
 			array(
-				'label'     => __('General Style', 'codexshaper-framework'),
-				'tab'       => Controls_Manager::TAB_STYLE,
+				'label' => __( 'General Style', 'codexshaper-framework' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
 
 		$this->add_responsive_control(
 			'section_margin_5',
 			array(
-				'label'      => esc_html__('Section Margin', 'codexshaper-framework'),
+				'label'      => esc_html__( 'Section Margin', 'codexshaper-framework' ),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array('px', '%', 'em', 'rem', 'custom'),
+				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'default'    => array(
 					'unit'     => 'px',
 					'isLinked' => false,
@@ -119,9 +117,9 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_responsive_control(
 			'section_padding_5',
 			array(
-				'label'      => esc_html__('Section Padding', 'codexshaper-framework'),
+				'label'      => esc_html__( 'Section Padding', 'codexshaper-framework' ),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array('px', '%', 'em', 'rem', 'custom'),
+				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'default'    => array(
 					'unit'     => 'px',
 					'isLinked' => false,
@@ -136,9 +134,9 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_responsive_control(
 			'image_size_05',
 			array(
-				'label'      => __('Image size', 'codexshaper-framework'),
+				'label'      => __( 'Image size', 'codexshaper-framework' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array('px', 'em', 'rem'),
+				'size_units' => array( 'px', 'em', 'rem' ),
 				'selectors'  => array(
 					'{{WRAPPER}} .cdx-testimonial-slide-9 .cdx-client-wrap' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
 
@@ -149,9 +147,9 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_responsive_control(
 			'image_radius_05',
 			array(
-				'label'      => __('Image Border Radius', 'codexshaper-framework'),
+				'label'      => __( 'Image Border Radius', 'codexshaper-framework' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array('px', 'em', 'rem', '%'),
+				'size_units' => array( 'px', 'em', 'rem', '%' ),
 				'selectors'  => array(
 					'{{WRAPPER}} .cdx-testimonial-slide-9 .cdx-client-wrap' => 'border-radius: {{SIZE}}{{UNIT}};',
 
@@ -163,7 +161,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'description_typography',
-				'label'    => __('Description Typography', 'codexshaper-framework'),
+				'label'    => __( 'Description Typography', 'codexshaper-framework' ),
 				'selector' => '{{WRAPPER}} .cdx-content',
 			)
 		);
@@ -171,7 +169,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_control(
 			'description_color',
 			array(
-				'label'     => __('Description Color', 'codexshaper-framework'),
+				'label'     => __( 'Description Color', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .cdx-content' => 'color: {{VALUE}}',
@@ -182,9 +180,9 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_responsive_control(
 			'description_padding_5',
 			array(
-				'label'      => esc_html__('Description Padding', 'codexshaper-framework'),
+				'label'      => esc_html__( 'Description Padding', 'codexshaper-framework' ),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array('px', '%', 'em', 'rem', 'custom'),
+				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'default'    => array(
 					'unit'     => 'px',
 					'isLinked' => false,
@@ -200,16 +198,16 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 			'description_show_hr',
 			array(
 				'type'  => Controls_Manager::DIVIDER,
-				'label' => __('description show hr', 'codexshaper-framework'),
+				'label' => __( 'description show hr', 'codexshaper-framework' ),
 			)
 		);
 
 		$this->add_responsive_control(
 			'name_padding_5',
 			array(
-				'label'      => esc_html__('Name Padding', 'codexshaper-framework'),
+				'label'      => esc_html__( 'Name Padding', 'codexshaper-framework' ),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array('px', '%', 'em', 'rem', 'custom'),
+				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'default'    => array(
 					'unit'     => 'px',
 					'isLinked' => false,
@@ -225,7 +223,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'name_typography',
-				'label'    => __('Name Typography', 'codexshaper-framework'),
+				'label'    => __( 'Name Typography', 'codexshaper-framework' ),
 				'selector' => '{{WRAPPER}} .cdx-name',
 			)
 		);
@@ -233,7 +231,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_control(
 			'name_color',
 			array(
-				'label'     => __('Name Color', 'codexshaper-framework'),
+				'label'     => __( 'Name Color', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .cdx-name' => 'color: {{VALUE}}',
@@ -245,16 +243,16 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 			'name_show_hr',
 			array(
 				'type'  => Controls_Manager::DIVIDER,
-				'label' => __('name show hr', 'codexshaper-framework'),
+				'label' => __( 'name show hr', 'codexshaper-framework' ),
 			)
 		);
 
 		$this->add_responsive_control(
 			'designation_padding_5',
 			array(
-				'label'      => esc_html__('Designation Padding', 'codexshaper-framework'),
+				'label'      => esc_html__( 'Designation Padding', 'codexshaper-framework' ),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array('px', '%', 'em', 'rem', 'custom'),
+				'size_units' => array( 'px', '%', 'em', 'rem', 'custom' ),
 				'default'    => array(
 					'unit'     => 'px',
 					'isLinked' => false,
@@ -270,7 +268,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'designation_typography',
-				'label'    => __('Designation Typography', 'codexshaper-framework'),
+				'label'    => __( 'Designation Typography', 'codexshaper-framework' ),
 				'selector' => '{{WRAPPER}} .cdx-designation',
 			)
 		);
@@ -278,7 +276,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_control(
 			'designation_color',
 			array(
-				'label'     => __('Designation Color', 'codexshaper-framework'),
+				'label'     => __( 'Designation Color', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .cdx-designation' => 'color: {{VALUE}}',
@@ -290,7 +288,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 			'designation_show_hr',
 			array(
 				'type'  => Controls_Manager::DIVIDER,
-				'label' => __('designation show hr', 'codexshaper-framework'),
+				'label' => __( 'designation show hr', 'codexshaper-framework' ),
 			)
 		);
 
@@ -300,16 +298,16 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 
 		$this->start_controls_tab(
 			'navigation_normal_tab',
-			[
-				'label' => esc_html__('Normal', 'codexshaper-framework'),
-			]
+			array(
+				'label' => esc_html__( 'Normal', 'codexshaper-framework' ),
+			)
 		);
 
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'next_prev_typography',
-				'label'    => __('Next and Previous Typography', 'codexshaper-framework'),
+				'label'    => __( 'Next and Previous Typography', 'codexshaper-framework' ),
 				'selector' => '{{WRAPPER}} .cdx-navigation-wrap-9 .cdx-prev-btn, {{WRAPPER}} .cdx-navigation-wrap-9 .cdx-next-btn',
 
 			)
@@ -318,7 +316,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_control(
 			'next_prev_color',
 			array(
-				'label'     => __(' Next and Previous Text Color', 'codexshaper-framework'),
+				'label'     => __( ' Next and Previous Text Color', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .cdx-navigation-wrap-9 .cdx-prev-btn' => 'color: {{VALUE}}',
@@ -330,9 +328,9 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_responsive_control(
 			'navigation_border_width',
 			array(
-				'label'      => __('Border Width', 'codexshaper-framework'),
+				'label'      => __( 'Border Width', 'codexshaper-framework' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array('px', 'em', 'rem'),
+				'size_units' => array( 'px', 'em', 'rem' ),
 				'selectors'  => array(
 					'{{WRAPPER}} .cdx-navigation-wrap-9 .cdx-btn-navigation:nth-child(1)' => 'border-right: {{SIZE}}{{UNIT}} solid;',
 					'{{WRAPPER}} .cdx-navigation-wrap-9 .cdx-btn-navigation:nth-child(2)' => 'border-left: {{SIZE}}{{UNIT}} solid;',
@@ -343,7 +341,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_control(
 			'nav_border_color',
 			array(
-				'label'     => __(' Border Color', 'codexshaper-framework'),
+				'label'     => __( ' Border Color', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .cdx-navigation-wrap-9 .cdx-btn-navigation:nth-child(1)' => 'border-color: {{VALUE}}',
@@ -356,15 +354,15 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 
 		$this->start_controls_tab(
 			'navigation_hover_tab',
-			[
-				'label' => esc_html__('Hover', 'codexshaper-framework'),
-			]
+			array(
+				'label' => esc_html__( 'Hover', 'codexshaper-framework' ),
+			)
 		);
 
 		$this->add_control(
 			'next_prev_hover_color',
 			array(
-				'label'     => __(' Next and Previous Text Color', 'codexshaper-framework'),
+				'label'     => __( ' Next and Previous Text Color', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .cdx-navigation-wrap-9 .cdx-prev-btn:hover' => 'color: {{VALUE}}',
@@ -380,8 +378,8 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->start_controls_section(
 			'testimonial_background_style_05',
 			array(
-				'label'     => __('Testimonial Background', 'codexshaper-framework'),
-				'tab'       => Controls_Manager::TAB_STYLE,
+				'label' => __( 'Testimonial Background', 'codexshaper-framework' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
 
@@ -392,7 +390,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->start_controls_tab(
 			'testimonial_bg_normal_tab_05',
 			array(
-				'label' => __('Normal', 'codexshaper-framework'),
+				'label' => __( 'Normal', 'codexshaper-framework' ),
 			)
 		);
 
@@ -400,7 +398,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'testimonial_bg_color_05',
-				'types'    => array('classic', 'gradient'),
+				'types'    => array( 'classic', 'gradient' ),
 				'selector' => '{{WRAPPER}} .cdx-testimonial-area-9',
 
 			)
@@ -409,9 +407,9 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_control(
 			'testimonial_border_radius_05',
 			array(
-				'label'      => __('Testimonial Border Radius', 'codexshaper-framework'),
+				'label'      => __( 'Testimonial Border Radius', 'codexshaper-framework' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array('px', 'em', 'rem'),
+				'size_units' => array( 'px', 'em', 'rem' ),
 				'default'    => array(
 					'unit' => 'px',
 					'size' => 0,
@@ -433,7 +431,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'testimonial_shadow_05',
-				'label'    => __('Hero Shadow', 'codexshaper-framework'),
+				'label'    => __( 'Hero Shadow', 'codexshaper-framework' ),
 				'selector' => '{{WRAPPER}} .cdx-testimonial-area-9',
 			)
 		);
@@ -441,9 +439,9 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_control(
 			'testimonial_border_width_05',
 			array(
-				'label'      => __('Border Width', 'codexshaper-framework'),
+				'label'      => __( 'Border Width', 'codexshaper-framework' ),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array('px', 'em', 'rem'),
+				'size_units' => array( 'px', 'em', 'rem' ),
 				'selectors'  => array(
 					'{{WRAPPER}} .cdx-testimonial-area-9' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
@@ -453,7 +451,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_control(
 			'testimonial_border_color_05',
 			array(
-				'label'     => __('Border Color', 'codexshaper-framework'),
+				'label'     => __( 'Border Color', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .cdx-testimonial-area-9' => 'border-color: {{VALUE}};',
@@ -464,13 +462,13 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->add_control(
 			'testimonial_border_style_05',
 			array(
-				'label'     => __('Border Style', 'codexshaper-framework'),
+				'label'     => __( 'Border Style', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => array(
-					'none'   => __('None', 'codexshaper-framework'),
-					'solid'  => __('Solid', 'codexshaper-framework'),
-					'dashed' => __('Dashed', 'codexshaper-framework'),
-					'dotted' => __('Dotted', 'codexshaper-framework'),
+					'none'   => __( 'None', 'codexshaper-framework' ),
+					'solid'  => __( 'Solid', 'codexshaper-framework' ),
+					'dashed' => __( 'Dashed', 'codexshaper-framework' ),
+					'dotted' => __( 'Dotted', 'codexshaper-framework' ),
 				),
 				'default'   => 'none',
 				'selectors' => array(
@@ -484,7 +482,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 		$this->start_controls_tab(
 			'testimonial_bg_hover_tab_05',
 			array(
-				'label' => __('Hover', 'codexshaper-framework'),
+				'label' => __( 'Hover', 'codexshaper-framework' ),
 			)
 		);
 
@@ -492,7 +490,7 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'testimonial_hover_bg_color_05',
-				'types'    => array('classic', 'gradient'),
+				'types'    => array( 'classic', 'gradient' ),
 				'selector' => '{{WRAPPER}} .cdx-testimonial-area-9:hover',
 			)
 		);
@@ -507,44 +505,43 @@ class Skin_Testimonial_Five extends Skin_Testimonial_Base
 	 *
 	 * Written in PHP and used to generate the final HTML.
 	 *
-	 * @since 1.0.0 
+	 * @since 1.0.0
 	 * @access public
 	 */
-	public function render()
-	{
+	public function render() {
 
-		$parent = $this->parent;
-		$settings          = $parent->get_settings_for_display();
-		$data = [
+		$parent   = $this->parent;
+		$settings = $parent->get_settings_for_display();
+		$data     = array(
 			'class' => 'cdx-testimonial-slider-9',
-		];
+		);
 
-		$parent->add_slider_attributes($parent, $data);
+		$parent->add_slider_attributes( $parent, $data );
 
 		$is_lazy_load = 'yes' === $settings['lazy_load'];
-		if (! empty($settings['items'])) {
-			foreach ($settings['items'] as $item) {
-				$image_size = $item['author_image_size'] ?? 'full';
-				$author_image = $item['testimonial_author_image'] ?? null;
-				$author_image_id = $author_image['id'] ?? null;
+		if ( ! empty( $settings['items'] ) ) {
+			foreach ( $settings['items'] as $item ) {
+				$image_size          = $item['author_image_size'] ?? 'full';
+				$author_image        = $item['testimonial_author_image'] ?? null;
+				$author_image_id     = $author_image['id'] ?? null;
 				$author_size_image[] = $this->get_size_image(
 					image_id: $author_image_id,
 					size: $image_size,
 					is_custom_lazy: $is_lazy_load,
-					attributes: [
-						'alt' => 'Client Image',
-						'class' => 'cdx-client-img',
+					attributes: array(
+						'alt'          => 'Client Image',
+						'class'        => 'cdx-client-img',
 						'fallback_url' => 0 < $author_image_id ? '' : $author_image['url'],
-					]
+					)
 				);
 			}
 		}
 		$data = array(
-			'parent' => $this->parent,
-			'settings' => $settings,
-			'author_size_image' => $author_size_image ?? [],
-			'is_lazy_load' => $is_lazy_load,
+			'parent'            => $this->parent,
+			'settings'          => $settings,
+			'author_size_image' => $author_size_image ?? array(),
+			'is_lazy_load'      => $is_lazy_load,
 		);
-		cxf_view('testimonial-slider.skins.testimonial-slider-five', $data);
+		cxf_view( 'testimonial-slider.skins.testimonial-slider-five', $data );
 	}
 }

@@ -84,11 +84,11 @@ abstract class Field {
 	 * @return void
 	 */
 	public function __construct( $field = array(), $value = '', $identifier = '', $where = '', $parent = '' ) {
-		$this->field  		= $field;
-		$this->value  		= $value;
-		$this->identifier   = $identifier;
-		$this->where  		= $where;
-		$this->parent 		= $parent;
+		$this->field      = $field;
+		$this->value      = $value;
+		$this->identifier = $identifier;
+		$this->where      = $where;
+		$this->parent     = $parent;
 
 		if ( method_exists( $this, 'enqueue_scripts' ) ) {
 			$this->add_action( 'admin_enqueue_scripts', 'enqueue_scripts' );

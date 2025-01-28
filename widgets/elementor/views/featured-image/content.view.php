@@ -11,9 +11,9 @@
 
 ?>
 <div class="cxf-featured-image-wrapper">
-            <?php if(get_post_thumbnail_id( $post_id )): ?>
-			<?php echo get_the_post_thumbnail( $post_id, $image_size, array('loading' => 'lazy') ); ?>
-            <?php elseif($fallback_size_image):?>
-                <?php echo $fallback_size_image; ?>
-            <?php endif;?>
-        </div>
+	<?php if ( get_post_thumbnail_id( $post_id ) ) : ?>
+		<?php echo get_the_post_thumbnail( $post_id, $image_size, array( 'loading' => 'lazy' ) ); ?>
+	<?php elseif ( $fallback_size_image ) : ?>
+		<?php echo wp_kses_post( $fallback_size_image ); ?>
+	<?php endif; ?>
+</div>

@@ -26,10 +26,11 @@ use Elementor\Skin_Base;
  * @link       https://github.com/codexshaper/codexshaper-framework
  * @since      1.0.0
  */
-abstract class Skin_Testimonial_Base extends Skin_Base
-{
+abstract class Skin_Testimonial_Base extends Skin_Base {
+
 	use ImageHelper;
-    /**
+
+	/**
 	 * Register skin controls actions.
 	 *
 	 * Run on init and used to register new skins to be injected to the widget.

@@ -34,28 +34,30 @@ class Backup extends Field {
 	 * @return void
 	 */
 	public function render() {
-        $identifier = $this->identifier;
-        $nonce  = wp_create_nonce( 'cxf_backup_nonce' );
-        $export_data = wp_json_encode( get_option( $identifier ) );
-        $export = add_query_arg( 
-            array( 
-                'action' => 'cxf_backup_export', 
-                'identifier' =>  $this->identifier, 
-                'nonce' => $nonce 
-            ), 
-            admin_url( 'admin-ajax.php' ) 
-        );
+		$identifier  = $this->identifier;
+		$nonce       = wp_create_nonce( 'cxf_backup_nonce' );
+		$export_data = wp_json_encode( get_option( $identifier ) );
+		$export      = add_query_arg(
+			array(
+				'action'     => 'cxf_backup_export',
+				'identifier' => $this->identifier,
+				'nonce'      => $nonce,
+			),
+			admin_url( 'admin-ajax.php' )
+		);
 
-        $this->before();
+		$this->before();
 
-        cxf_view( 'builder.fields.backup', compact(
-                'identifier',
-                'nonce',
-                'export',
-                'export_data',
-            ) 
-        );
+		cxf_view(
+			'builder.fields.backup',
+			compact(
+				'identifier',
+				'nonce',
+				'export',
+				'export_data',
+			)
+		);
 
-        $this->after();
+		$this->after();
 	}
 }

@@ -153,10 +153,10 @@ class Video_Popup_Button extends Widget {
 		$this->add_control(
 			'animation_control',
 			array(
-				'label'        => __('Button Animation', 'codexshaper-framework'),
+				'label'        => __( 'Button Animation', 'codexshaper-framework' ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => __('Yes', 'codexshaper-framework'),
-				'label_off'    => __('No', 'codexshaper-framework'),
+				'label_on'     => __( 'Yes', 'codexshaper-framework' ),
+				'label_off'    => __( 'No', 'codexshaper-framework' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
 			)
@@ -354,9 +354,9 @@ class Video_Popup_Button extends Widget {
 			);
 		}
 		$data = array(
-			'settings' => $settings,
+			'settings'      => $settings,
 			'play_btn_icon' => $play_btn_icon,
 		);
-		cxf_view('video-popup-button.content', $data);
+		cxf_view( 'video-popup-button.content', $data );
 	}
 }

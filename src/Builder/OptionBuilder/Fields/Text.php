@@ -34,16 +34,16 @@ class Text extends Field {
 	 * @return void
 	 */
 	public function render() {
-        $field_attributes = $this->field['field_'] ?? [];
-        $type = $field_attributes['type'] ?? 'text';
-        $name   = $this->get_name( $this->field, $this->identifier );
-        $value = $this->value;
-        $attributes = $this->get_attributes();
+		$field_attributes = $this->field['field_'] ?? array();
+		$type             = $field_attributes['type'] ?? 'text';
+		$name             = $this->get_name( $this->field, $this->identifier );
+		$value            = $this->value;
+		$attributes       = $this->get_attributes();
 
-        $this->before();
+		$this->before();
 
-        cxf_view( 'builder.fields.text', compact( 'type', 'name', 'value', 'attributes' ) );
+		cxf_view( 'builder.fields.text', compact( 'type', 'name', 'value', 'attributes' ) );
 
-        $this->after();
+		$this->after();
 	}
 }

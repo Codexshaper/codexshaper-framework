@@ -223,8 +223,8 @@ if ( ! function_exists( 'cxf_view_path' ) ) {
 		// Get the view base path.
 		$view_base = cxf_view_base( $base );
 		// Sanitize the view name.
-		$path = str_replace( array( '.', '|' ), DIRECTORY_SEPARATOR, $view );
-		$fallback_base = $base ?? CXF_PATH . 'views';
+		$path                = str_replace( array( '.', '|' ), DIRECTORY_SEPARATOR, $view );
+		$fallback_base       = $base ?? CXF_PATH . 'views';
 		$elementor_view_base = CXF_PATH . 'widgets/elementor/views';
 		$wordpress_view_base = CXF_PATH . 'widgets/wordpress/views';
 
@@ -235,13 +235,13 @@ if ( ! function_exists( 'cxf_view_path' ) ) {
 			 *
 			 * @param array $bases View bases.
 			 */
-			$bases = apply_filters( 
-				'cxf/view/bases', 
-				array( 
-					$elementor_view_base, 
-					$wordpress_view_base, 
+			$bases = apply_filters(
+				'cxf/view/bases',
+				array(
+					$elementor_view_base,
+					$wordpress_view_base,
 					$fallback_base,
-				) 
+				)
 			);
 
 			foreach ( $bases as $custom_base ) {
@@ -290,61 +290,61 @@ if ( ! function_exists( 'cxf_view_exists' ) ) {
 
 if ( ! function_exists( 'cxf_view' ) ) {
 
-    /**
-     * Render a View with Full Scope Isolation
-     *
-     * @param string $view View name.
-     * @param array  $data Variables to pass to the view.
-     * @param bool   $render Whether to return the rendered content instead of echoing it.
-     * @param string $base Base directory for the view files.
-     *
-     * @return string|void Rendered output or void if rendered directly.
-     */
-    function cxf_view( $view, $data = [], $render = false, $base = '' ) {
-        static $data_stack = []; // Keeps track of view data for nested calls.
+	/**
+	 * Render a View with Full Scope Isolation
+	 *
+	 * @param string $view View name.
+	 * @param array  $data Variables to pass to the view.
+	 * @param bool   $render Whether to return the rendered content instead of echoing it.
+	 * @param string $base Base directory for the view files.
+	 *
+	 * @return string|void Rendered output or void if rendered directly.
+	 */
+	function cxf_view( $view, $data = array(), $render = false, $base = '' ) {
+		static $data_stack = array(); // Keeps track of view data for nested calls.
 
-        // Resolve the full path to the view file.
-        $view_path = cxf_view_path( $view, $base );
+		// Resolve the full path to the view file.
+		$view_path = cxf_view_path( $view, $base );
 
-        // Check if the view file exists.
-        if ( ! file_exists( $view_path ) ) {
-            throw new Exception(
-                sprintf(
+		// Check if the view file exists.
+		if ( ! file_exists( $view_path ) ) {
+			throw new Exception(
+				sprintf(
 					/* translators: %s: View file path. */
-                    esc_html__( 'View file not found: %s', 'codexshaper-framework' ),
-                    esc_html( $view_path )
-                )
-            );
-        }
+					esc_html__( 'View file not found: %s', 'codexshaper-framework' ),
+					esc_html( $view_path )
+				)
+			);
+		}
 
-        // Push the current view data onto the stack.
-        array_push( $data_stack, $data );
+		// Push the current view data onto the stack.
+		array_push( $data_stack, $data );
 
-        // Use a closure to isolate the view's scope.
-        $output = (function( $view_path ) use ( &$data_stack ) {
-            // Extract the latest data on the stack.
-            extract( end( $data_stack ), EXTR_SKIP );
+		// Use a closure to isolate the view's scope.
+		$output = ( function ( $view_path ) use ( &$data_stack ) {
+			// Extract the latest data on the stack.
+			extract( end( $data_stack ), EXTR_SKIP );
 
-            // Start output buffering.
-            ob_start();
+			// Start output buffering.
+			ob_start();
 
-            // Include the view file.
-            include $view_path;
+			// Include the view file.
+			include $view_path;
 
-            // Return the buffered content.
-            return ob_get_clean();
-        })( $view_path );
+			// Return the buffered content.
+			return ob_get_clean();
+		} )( $view_path );
 
-        // Pop the current view data off the stack after rendering.
-        array_pop( $data_stack );
+		// Pop the current view data off the stack after rendering.
+		array_pop( $data_stack );
 
-        // Return or echo the output based on the $render flag.
-        if ( $render ) {
-            return $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-        }
+		// Return or echo the output based on the $render flag.
+		if ( $render ) {
+			return $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
 
-        echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-    }
+		echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
 }
 
 if ( ! function_exists( 'cxf_view_render' ) ) {

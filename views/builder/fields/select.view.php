@@ -7,9 +7,9 @@
 >
 <?php
 
-	if ( $args['placeholder'] && empty( $args['multiple'] ) ) :
-		$placeholder = empty( $args['chosen'] ) ? esc_html( $args['placeholder'] ) : '';
-?>
+if ( $args['placeholder'] && empty( $args['multiple'] ) ) :
+	$placeholder = empty( $args['chosen'] ) ? esc_html( $args['placeholder'] ) : '';
+	?>
 <option value=""><?php echo esc_html( $args['placeholder'] ); ?></option>
 <?php endif; ?>
 

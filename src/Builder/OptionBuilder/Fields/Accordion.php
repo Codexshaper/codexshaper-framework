@@ -35,24 +35,27 @@ class Accordion extends Field {
 	 */
 	public function render() {
 
-        /**
-         * Filter accordion block fields
-         *
-         * @since 1.0.0
-         *
-         * @param array $block_fields Accordion block fields.
-         */
+		/**
+		 * Filter accordion block fields
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $block_fields Accordion block fields.
+		 */
 		$block_fields = apply_filters( 'cxf/builder/fields/accordion/block_fields', array( 'accordion' ) );
 
-        $this->before();
+		$this->before();
 
-        cxf_view( 'builder.fields.accordion', [
-            'field' => $this->field,
-            'value' => $this->value,
-            'identifier'    => $this->identifier,
-            'block_fields' => $block_fields,
-        ] );
+		cxf_view(
+			'builder.fields.accordion',
+			array(
+				'field'        => $this->field,
+				'value'        => $this->value,
+				'identifier'   => $this->identifier,
+				'block_fields' => $block_fields,
+			)
+		);
 
-        $this->after();
+		$this->after();
 	}
 }

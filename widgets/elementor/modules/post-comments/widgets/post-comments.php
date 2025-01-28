@@ -20,7 +20,7 @@ use Elementor\Group_Control_Background;
 use Elementor\Plugin;
 
 // Exit if access directly.
-if (! defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 
@@ -34,8 +34,8 @@ if (! defined('ABSPATH')) {
  * @link       https://github.com/codexshaper/codexshaper-framework
  * @since      1.0.0
  */
-class Post_Comments extends Widget
-{
+class Post_Comments extends Widget {
+
 	use Fields;
 
 	/**
@@ -43,8 +43,7 @@ class Post_Comments extends Widget
 	 *
 	 * @return string Widget name.
 	 */
-	public function get_name()
-	{
+	public function get_name() {
 		return 'cxf--post-comments';
 	}
 
@@ -53,9 +52,8 @@ class Post_Comments extends Widget
 	 *
 	 * @return string Widget title.
 	 */
-	public function get_title()
-	{
-		return __('CXF Post Comments', 'codexshaper-framework');
+	public function get_title() {
+		return __( 'CXF Post Comments', 'codexshaper-framework' );
 	}
 
 	/**
@@ -68,8 +66,7 @@ class Post_Comments extends Widget
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_icon()
-	{
+	public function get_icon() {
 		return 'eicon-comments';
 	}
 
@@ -78,9 +75,8 @@ class Post_Comments extends Widget
 	 *
 	 * @return array Widget keywords.
 	 */
-	public function get_keywords()
-	{
-		return array('Post Comments', 'Comments', 'Post', 'CodexShaper', 'CodexShaper Framework', 'CXF');
+	public function get_keywords() {
+		return array( 'Post Comments', 'Comments', 'Post', 'CodexShaper', 'CodexShaper Framework', 'CXF' );
 	}
 
 	/**
@@ -88,9 +84,8 @@ class Post_Comments extends Widget
 	 *
 	 * @return array Widget categories.
 	 */
-	public function get_categories()
-	{
-		return array('cxf--widget');
+	public function get_categories() {
+		return array( 'cxf--widget' );
 	}
 
 	/**
@@ -103,9 +98,8 @@ class Post_Comments extends Widget
 	 *
 	 * @return array Widget style dependencies.
 	 */
-	public function get_style_depends(): array
-	{
-		return array('cxf--post-comments');
+	public function get_style_depends(): array {
+		return array( 'cxf--post-comments' );
 	}
 
 	/**
@@ -116,8 +110,7 @@ class Post_Comments extends Widget
 	 *
 	 * @return void
 	 */
-	protected function register_controls()
-	{
+	protected function register_controls() {
 
 		// Register style controls.
 		$this->register_style_comments_controls();
@@ -143,12 +136,11 @@ class Post_Comments extends Widget
 	 *
 	 * @return void
 	 */
-	protected function register_style_comments_controls()
-	{
+	protected function register_style_comments_controls() {
 		$this->start_controls_section(
 			'comments_section_style',
 			array(
-				'label' => __('Comments', 'codexshaper-framework'),
+				'label' => __( 'Comments', 'codexshaper-framework' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -156,7 +148,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'total_comments_heading',
 			array(
-				'label'     => esc_html__('Total Comments', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Total Comments', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -179,7 +171,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'author_name_heading',
 			array(
-				'label'     => esc_html__('Author Name', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Author Name', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -202,7 +194,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'comments_date_heading',
 			array(
-				'label'     => esc_html__('Date', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Date', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -225,7 +217,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'comment_text_heading',
 			array(
-				'label'     => esc_html__('Comment Text', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Comment Text', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -248,7 +240,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'comment_author_thumb_heading',
 			array(
-				'label'     => esc_html__('Comment Author Image', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Comment Author Image', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -270,7 +262,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'comment_author_thumb_wrapper_heading',
 			array(
-				'label'     => esc_html__('Comment Author Image Wrapper', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Comment Author Image Wrapper', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -296,12 +288,11 @@ class Post_Comments extends Widget
 	 *
 	 * @return void
 	 */
-	protected function register_style_comments_reply_btn_controls()
-	{
+	protected function register_style_comments_reply_btn_controls() {
 		$this->start_controls_section(
 			'comment_reply_btn_section_style',
 			array(
-				'label' => __('Reply Button', 'codexshaper-framework'),
+				'label' => __( 'Reply Button', 'codexshaper-framework' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -320,7 +311,7 @@ class Post_Comments extends Widget
 		$this->start_controls_tab(
 			'reply_btn_style_normal_tab',
 			array(
-				'label' => esc_html__('Normal', 'codexshaper-framework'),
+				'label' => esc_html__( 'Normal', 'codexshaper-framework' ),
 			)
 		);
 
@@ -336,7 +327,7 @@ class Post_Comments extends Widget
 		$this->start_controls_tab(
 			'reply_btn_style_hover_tab',
 			array(
-				'label' => esc_html__('Hover', 'codexshaper-framework'),
+				'label' => esc_html__( 'Hover', 'codexshaper-framework' ),
 			)
 		);
 
@@ -351,7 +342,7 @@ class Post_Comments extends Widget
 			Group_Control_Background::get_type(),
 			array(
 				'name'      => 'reply_btn_hover_background',
-				'types'     => array('classic', 'gradient'),
+				'types'     => array( 'classic', 'gradient' ),
 				'separator' => 'after',
 				'selector'  => '{{WRAPPER}} .cxf--comment-wrap .comments-area .comment-list li .single-comment-wrap .content .comment-reply-link:hover',
 			)
@@ -360,7 +351,7 @@ class Post_Comments extends Widget
 		$this->add_responsive_control(
 			'reply_border_color_hover',
 			array(
-				'label'     => esc_html__('Border Color', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Border Color', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .cxf--comment-wrap .submit-btn:hover' => 'border-color: {{VALUE}};',
@@ -382,12 +373,11 @@ class Post_Comments extends Widget
 	 *
 	 * @return void
 	 */
-	protected function register_style_comments_form_controls()
-	{
+	protected function register_style_comments_form_controls() {
 		$this->start_controls_section(
 			'comment_form_section_style',
 			array(
-				'label' => __('Comment Form', 'codexshaper-framework'),
+				'label' => __( 'Comment Form', 'codexshaper-framework' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -395,7 +385,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'comment_form_title_heading',
 			array(
-				'label'     => esc_html__('Heading Title', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Heading Title', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -417,7 +407,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'comment_form_info_heading',
 			array(
-				'label'     => esc_html__('Info Text', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Info Text', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -439,7 +429,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'comment_form_info_link_heading',
 			array(
-				'label'     => esc_html__('Info Link', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Info Link', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -453,7 +443,7 @@ class Post_Comments extends Widget
 		$this->start_controls_tab(
 			'comment_form_info_link_style_normal_tab',
 			array(
-				'label' => esc_html__('Normal', 'codexshaper-framework'),
+				'label' => esc_html__( 'Normal', 'codexshaper-framework' ),
 			)
 		);
 
@@ -469,7 +459,7 @@ class Post_Comments extends Widget
 		$this->start_controls_tab(
 			'comment_form_info_link_style_hover_tab',
 			array(
-				'label' => esc_html__('Hover', 'codexshaper-framework'),
+				'label' => esc_html__( 'Hover', 'codexshaper-framework' ),
 			)
 		);
 
@@ -494,12 +484,11 @@ class Post_Comments extends Widget
 	 *
 	 * @return void
 	 */
-	protected function register_style_comments_form_input_controls()
-	{
+	protected function register_style_comments_form_input_controls() {
 		$this->start_controls_section(
 			'comment_form_input_section_style',
 			array(
-				'label' => __('Form Input', 'codexshaper-framework'),
+				'label' => __( 'Form Input', 'codexshaper-framework' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -507,7 +496,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'input_wrapper_heading',
 			array(
-				'label'     => esc_html__('Input Wrapper', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Input Wrapper', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -523,7 +512,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'input_box_heading',
 			array(
-				'label'     => esc_html__('Input Box', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Input Box', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -544,7 +533,7 @@ class Post_Comments extends Widget
 		$this->start_controls_tab(
 			'input_box_style_normal_tab',
 			array(
-				'label' => esc_html__('Normal', 'codexshaper-framework'),
+				'label' => esc_html__( 'Normal', 'codexshaper-framework' ),
 			)
 		);
 
@@ -558,7 +547,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'input_placeholder_color',
 			array(
-				'label'     => __('Placeholder Color', 'codexshaper-framework'),
+				'label'     => __( 'Placeholder Color', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .cxf--comment-wrap .comment-form .form-group input.form-control::placeholder' => 'color: {{VALUE}}',
@@ -571,7 +560,7 @@ class Post_Comments extends Widget
 		$this->start_controls_tab(
 			'input_box_style_focus_tab',
 			array(
-				'label' => esc_html__('Focus', 'codexshaper-framework'),
+				'label' => esc_html__( 'Focus', 'codexshaper-framework' ),
 			)
 		);
 
@@ -586,7 +575,7 @@ class Post_Comments extends Widget
 			Group_Control_Background::get_type(),
 			array(
 				'name'      => 'input_box_text_focus_background',
-				'types'     => array('classic', 'gradient'),
+				'types'     => array( 'classic', 'gradient' ),
 				'separator' => 'after',
 				'selector'  => '{{WRAPPER}} .cxf--comment-wrap .comment-form .form-group input.form-control:focus',
 			)
@@ -595,7 +584,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'input_border_color_focus',
 			array(
-				'label'     => __('Border Color', 'codexshaper-framework'),
+				'label'     => __( 'Border Color', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .cxf--comment-wrap .comment-form .form-group input.form-control:focus' => 'border-color: {{VALUE}}',
@@ -617,12 +606,11 @@ class Post_Comments extends Widget
 	 *
 	 * @return void
 	 */
-	protected function register_style_comments_form_textarea_controls()
-	{
+	protected function register_style_comments_form_textarea_controls() {
 		$this->start_controls_section(
 			'comment_form_textarea_section_style',
 			array(
-				'label' => __('Textarea', 'codexshaper-framework'),
+				'label' => __( 'Textarea', 'codexshaper-framework' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -642,7 +630,7 @@ class Post_Comments extends Widget
 		$this->start_controls_tab(
 			'comment_form_textarea_style_normal_tab',
 			array(
-				'label' => esc_html__('Normal', 'codexshaper-framework'),
+				'label' => esc_html__( 'Normal', 'codexshaper-framework' ),
 			)
 		);
 
@@ -656,7 +644,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'textarea_placeholder_color',
 			array(
-				'label'     => __('Placeholder Color', 'codexshaper-framework'),
+				'label'     => __( 'Placeholder Color', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .cxf--comment-wrap .comment-form .form-group.textarea .form-control::placeholder' => 'color: {{VALUE}}',
@@ -669,7 +657,7 @@ class Post_Comments extends Widget
 		$this->start_controls_tab(
 			'comment_form_textarea_style_focus_tab',
 			array(
-				'label' => esc_html__('Focus', 'codexshaper-framework'),
+				'label' => esc_html__( 'Focus', 'codexshaper-framework' ),
 			)
 		);
 
@@ -684,7 +672,7 @@ class Post_Comments extends Widget
 			Group_Control_Background::get_type(),
 			array(
 				'name'      => 'input_box_textarea_focus_background',
-				'types'     => array('classic', 'gradient'),
+				'types'     => array( 'classic', 'gradient' ),
 				'separator' => 'after',
 				'selector'  => '{{WRAPPER}} .cxf--comment-wrap .comment-form .form-group.textarea .form-control:focus',
 			)
@@ -693,7 +681,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'textarea_border_color_focus',
 			array(
-				'label'     => __('Border Color', 'codexshaper-framework'),
+				'label'     => __( 'Border Color', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .cxf--comment-wrap .comment-form .form-group.textarea .form-control:focus' => 'border-color: {{VALUE}}',
@@ -715,12 +703,11 @@ class Post_Comments extends Widget
 	 *
 	 * @return void
 	 */
-	protected function register_style_comments_form_checkbox_controls()
-	{
+	protected function register_style_comments_form_checkbox_controls() {
 		$this->start_controls_section(
 			'comment_form_checkbox_section_style',
 			array(
-				'label' => __('Checkbox', 'codexshaper-framework'),
+				'label' => __( 'Checkbox', 'codexshaper-framework' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -750,12 +737,11 @@ class Post_Comments extends Widget
 	 *
 	 * @return void
 	 */
-	protected function register_style_comments_form_btn_controls()
-	{
+	protected function register_style_comments_form_btn_controls() {
 		$this->start_controls_section(
 			'comment_form_btn_section_style',
 			array(
-				'label' => __('Submit Button', 'codexshaper-framework'),
+				'label' => __( 'Submit Button', 'codexshaper-framework' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -763,7 +749,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'btn_wrapper_heading',
 			array(
-				'label'     => esc_html__('Button Wrapper', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Button Wrapper', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -779,7 +765,7 @@ class Post_Comments extends Widget
 		$this->add_control(
 			'form_btn_heading',
 			array(
-				'label'     => esc_html__('Button', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Button', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -800,7 +786,7 @@ class Post_Comments extends Widget
 		$this->start_controls_tab(
 			'form_btn_style_normal_tab',
 			array(
-				'label' => esc_html__('Normal', 'codexshaper-framework'),
+				'label' => esc_html__( 'Normal', 'codexshaper-framework' ),
 			)
 		);
 
@@ -816,7 +802,7 @@ class Post_Comments extends Widget
 		$this->start_controls_tab(
 			'form_btn_style_hover_tab',
 			array(
-				'label' => esc_html__('Hover', 'codexshaper-framework'),
+				'label' => esc_html__( 'Hover', 'codexshaper-framework' ),
 			)
 		);
 
@@ -831,7 +817,7 @@ class Post_Comments extends Widget
 			Group_Control_Background::get_type(),
 			array(
 				'name'      => 'form_btn_focus_background',
-				'types'     => array('classic', 'gradient'),
+				'types'     => array( 'classic', 'gradient' ),
 				'separator' => 'after',
 				'selector'  => '{{WRAPPER}} .cxf--comment-wrap .submit-btn:hover',
 			)
@@ -840,7 +826,7 @@ class Post_Comments extends Widget
 		$this->add_responsive_control(
 			'form_border_color_hover',
 			array(
-				'label'     => esc_html__('Border Color', 'codexshaper-framework'),
+				'label'     => esc_html__( 'Border Color', 'codexshaper-framework' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .cxf--comment-wrap .submit-btn:hover' => 'border-color: {{VALUE}};',
@@ -864,13 +850,12 @@ class Post_Comments extends Widget
 	 *
 	 * @return void
 	 */
-	protected function render()
-	{
+	protected function render() {
 		$settings = $this->get_settings_for_display();
-		if (! comments_open() && (Plugin::instance()->preview->is_preview_mode() || Plugin::instance()->editor->is_edit_mode())) {
-			cxf_view('post-comments.alert');
+		if ( ! comments_open() && ( Plugin::instance()->preview->is_preview_mode() || Plugin::instance()->editor->is_edit_mode() ) ) {
+			cxf_view( 'post-comments.alert' );
 		} else {
-			cxf_view('post-comments.content');
+			cxf_view( 'post-comments.content' );
 		}
 	}
 }

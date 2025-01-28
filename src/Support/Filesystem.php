@@ -72,7 +72,7 @@ class Filesystem {
 		return $wp_filesystem;
 	}
 
-	public static function write($file_path, $body) {
+	public static function write( $file_path, $body ) {
 		global $wp_filesystem;
 
 		// Initialize the WP_Filesystem
@@ -88,6 +88,5 @@ class Filesystem {
 		}
 
 		return false;
-
 	}
 }

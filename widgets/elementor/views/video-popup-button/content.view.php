@@ -11,11 +11,11 @@
  */
 
 ?>
-<a aria-label="Video Popup Button" class="popup-video video-popup-btn palse-anim-wrap style-white position-relative" href="<?php echo esc_url($settings['video-url']['url']) ?? '#'; ?>">
-    <?php echo wp_kses($play_btn_icon, cxf_get_svg_rules()); ?>
-    <?php if ('yes' === $settings['animation_control']): ?>
-        <span class="palse-anim"></span>
-        <span class="palse-anim"></span>
-        <span class="palse-anim"></span>
-    <?php endif; ?>
+<a aria-label="Video Popup Button" class="popup-video video-popup-btn palse-anim-wrap style-white position-relative" href="<?php echo esc_url( $settings['video-url']['url'] ) ?? '#'; ?>">
+	<?php echo wp_kses( $play_btn_icon, cxf_get_svg_rules() ); ?>
+	<?php if ( 'yes' === $settings['animation_control'] ) : ?>
+		<span class="palse-anim"></span>
+		<span class="palse-anim"></span>
+		<span class="palse-anim"></span>
+	<?php endif; ?>
 </a>

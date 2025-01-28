@@ -32,76 +32,75 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Builder {
 
 	use Hook;
-	
-    public function get_tabs( $sections ) {
 
-        $count   = 10;
-        $result  = array();
-        $parents = array();
+	public function get_tabs( $sections ) {
 
-        foreach ( $sections as $key => $section ) {
-            $parent_section = $section['parent'] ?? '';
-            if ($parent_section ) {
-                $section['priority'] = $section['priority'] ?? $count;
-                $parents[$parent_section][] = $section;
-                unset( $sections[$key] );
-            }
+		$count   = 10;
+		$result  = array();
+		$parents = array();
 
-            $count++;
-        }
+		foreach ( $sections as $key => $section ) {
+			$parent_section = $section['parent'] ?? '';
+			if ( $parent_section ) {
+				$section['priority']          = $section['priority'] ?? $count;
+				$parents[ $parent_section ][] = $section;
+				unset( $sections[ $key ] );
+			}
 
-        foreach ( $sections as $key => $section ) {
-            $section['priority'] = $section['priority'] ?? ++$count;
-            $section_id = $section['id'] ?? '';
+			++$count;
+		}
 
-            if ( $section_id && isset($parents[$section_id]) && $parents[$section_id] ) {
-                $section['children'] = wp_list_sort( 
-                    $parents[$section_id], 
-                    array( 'priority' => 'ASC' ), 
-                    'ASC',
-                     true 
-                );
-            }
+		foreach ( $sections as $key => $section ) {
+			$section['priority'] = $section['priority'] ?? ++$count;
+			$section_id          = $section['id'] ?? '';
 
-            $result[] = $section;
-        }
+			if ( $section_id && isset( $parents[ $section_id ] ) && $parents[ $section_id ] ) {
+				$section['children'] = wp_list_sort(
+					$parents[ $section_id ],
+					array( 'priority' => 'ASC' ),
+					'ASC',
+					true
+				);
+			}
 
-        return wp_list_sort( $result, array( 'priority' => 'ASC' ), 'ASC', true );
+			$result[] = $section;
+		}
 
-    }
+		return wp_list_sort( $result, array( 'priority' => 'ASC' ), 'ASC', true );
+	}
 
-    public function get_sections( $sections ) {
+	public function get_sections( $sections ) {
 
-        $result = array();
-        $tab_sections = $this->get_tabs( $sections );
+		$result       = array();
+		$tab_sections = $this->get_tabs( $sections );
 
-        foreach ( $tab_sections as $tab_section ) {
-            if ( ! empty( $tab_section['children'] ) ) {
-                foreach ( $tab_section['children'] as $sub ) {
-                    $sub['parent_title'] = ( ! empty( $tab_section['title'] ) ) ? $tab_section['title'] : '';
-                    $result[] = $sub;
-                }
-            }
-            if ( empty( $tab_section['children'] ) ) {
-                $result[] = $tab_section;
-            }
-        }
+		foreach ( $tab_sections as $tab_section ) {
+			if ( ! empty( $tab_section['children'] ) ) {
+				foreach ( $tab_section['children'] as $sub ) {
+					$sub['parent_title'] = ( ! empty( $tab_section['title'] ) ) ? $tab_section['title'] : '';
+					$result[]            = $sub;
+				}
+			}
+			if ( empty( $tab_section['children'] ) ) {
+				$result[] = $tab_section;
+			}
+		}
 
-        return $result;
-    }
+		return $result;
+	}
 
-    public function get_fields( $sections ) {
+	public function get_fields( $sections ) {
 
-        $result = array();
+		$result = array();
 
-        foreach ( $sections as $key => $section ) {
-            if ( ! empty( $section['fields'] ) ) {
-                foreach ( $section['fields'] as $field ) {
-                    $result[] = $field;
-                }
-            }
-        }
+		foreach ( $sections as $key => $section ) {
+			if ( ! empty( $section['fields'] ) ) {
+				foreach ( $section['fields'] as $field ) {
+					$result[] = $field;
+				}
+			}
+		}
 
-        return $result;
-    }
+		return $result;
+	}
 }

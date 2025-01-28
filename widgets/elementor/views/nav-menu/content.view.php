@@ -21,6 +21,6 @@
 	echo $menu_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	?>
 </div>
-<?php if ('yes' === $settings['show_mobile_menu']) : ?>
+<?php if ( 'yes' === $settings['show_mobile_menu'] ) : ?>
 	<div class="cxf-menu-overlay"></div>
 <?php endif; ?>
