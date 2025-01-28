@@ -167,7 +167,7 @@ trait Pagination {
 	 */
 	protected function get_wp_link_page_url_for_preview( $post, $query_args, $url, $nonce_key = 'preview_nonce', $nonce = '' ) {
 
-		if ($nonce && ! wp_verify_nonce( Helper::get_super_global_value($_GET, $nonce_key), $nonce ) ) {
+		if ( $nonce && ! wp_verify_nonce( Helper::get_super_global_value( $_GET, $nonce_key ), $nonce ) ) {
 			return;
 		}
 

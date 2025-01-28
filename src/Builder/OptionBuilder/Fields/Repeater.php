@@ -49,15 +49,15 @@ class Repeater extends BaseField {
 		$this->before();
 
 		cxf_view(
-			'builder.fields.repeater', 
+			'builder.fields.repeater',
 			array(
 				'identifier' => $this->identifier,
-				'value' => $this->value,
-				'field' => $this->field, 
-				'options' => $options 
+				'value'      => $this->value,
+				'field'      => $this->field,
+				'options'    => $options,
 			)
 		);
-		
+
 		$this->after();
 	}
 

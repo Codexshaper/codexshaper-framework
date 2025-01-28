@@ -55,7 +55,7 @@ class Module extends BaseModule {
 	public function get_assets_base_url(): string {
 		return CXF_URL . 'widgets/elementor/';
 	}
-	
+
 	/**
 	 * Get the module's associated widgets.
 	 *

@@ -186,8 +186,8 @@ class Container implements ContainerContract {
 	 */
 	public function alias( string $abstract, string $alias ) {
 		if ( ! isset( $this->bindings[ $abstract ] ) && ! class_exists( $abstract ) ) {
-			$abstract = sanitize_text_field($abstract);
-			throw new Exception( esc_html(sprintf('Cannot alias non-existent service %s.', $abstract)) );
+			$abstract = sanitize_text_field( $abstract );
+			throw new Exception( esc_html( sprintf( 'Cannot alias non-existent service %s.', $abstract ) ) );
 		}
 		$this->aliases[ $alias ] = $abstract;
 	}
@@ -200,7 +200,7 @@ class Container implements ContainerContract {
 	 */
 	public function scope( string $scope, callable $callback ) {
 		if ( isset( $this->scopes[ $scope ] ) ) {
-			$scope = sanitize_text_field($scope);
+			$scope = sanitize_text_field( $scope );
 			throw new Exception( esc_html( sprintf( 'Scope %s already defined.', $scope ) ) );
 		}
 
@@ -268,8 +268,8 @@ class Container implements ContainerContract {
 			return $this->resolve( $abstract );
 		}
 
-		$abstract = sanitize_text_field($abstract);
-	
+		$abstract = sanitize_text_field( $abstract );
+
 		throw new Exception( esc_html( sprintf( 'Service %s not found.', $abstract ) ) );
 	}
 
@@ -315,8 +315,8 @@ class Container implements ContainerContract {
 		$reflector = new ReflectionClass( $class );
 
 		if ( ! $reflector->isInstantiable() ) {
-			$class = sanitize_text_field($class);
-			throw new Exception( esc_html(sprintf('Class %s cannot be instantiated.', $class)) );
+			$class = sanitize_text_field( $class );
+			throw new Exception( esc_html( sprintf( 'Class %s cannot be instantiated.', $class ) ) );
 		}
 
 		$constructor = $reflector->getConstructor();
@@ -359,8 +359,8 @@ class Container implements ContainerContract {
 			} elseif ( $parameter->isDefaultValueAvailable() ) {
 				$dependencies[] = $parameter->getDefaultValue();
 			} else {
-				$name = sanitize_text_field($name);
-				throw new Exception( esc_html(sprintf( 'Cannot resolve dependency %s.', $name )));
+				$name = sanitize_text_field( $name );
+				throw new Exception( esc_html( sprintf( 'Cannot resolve dependency %s.', $name ) ) );
 			}
 		}
 
@@ -404,7 +404,7 @@ class Container implements ContainerContract {
 	 */
 	public function getScope( string $scope ) {
 		if ( ! isset( $this->scopes[ $scope ] ) ) {
-			$scope = sanitize_text_field($scope);
+			$scope = sanitize_text_field( $scope );
 			throw new Exception( esc_html( sprintf( 'Scope %s not found.', $scope ) ) );
 		}
 

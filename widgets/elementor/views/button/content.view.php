@@ -12,13 +12,13 @@
 ?>
 <div <?php echo $button_wrapper; ?>>
 	<?php echo $button_opening_tag; ?>
-	<?php if (empty($settings['cxf_button_icon_align']) || 'left' === $settings['cxf_button_icon_align']) : ?>
+	<?php if ( empty( $settings['cxf_button_icon_align'] ) || 'left' === $settings['cxf_button_icon_align'] ) : ?>
 		<span class="cxf--btn_icon">
 			<?php echo $icon_Html; ?>
 		</span>
 	<?php endif; ?>
 	<?php echo $settings['cxf_button_text']; ?>
-	<?php if ('right' === $settings['cxf_button_icon_align']) : ?>
+	<?php if ( 'right' === $settings['cxf_button_icon_align'] ) : ?>
 		<span class="cxf--btn_icon">
 			<?php echo $icon_Html; ?>
 		</span>

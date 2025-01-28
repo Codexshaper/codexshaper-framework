@@ -81,8 +81,8 @@ class Module extends BaseModule {
 	 * @return void
 	 */
 	public function register_styles() {
-		$widget_css_file =CXF_PATH. 'widgets/elementor/assets/css/cxf--eb-widget-testimonial-slider.min.css';
-		$version = file_exists( $widget_css_file ) ? filemtime( $widget_css_file ) : CXF_VERSION;
+		$widget_css_file = CXF_PATH . 'widgets/elementor/assets/css/cxf--eb-widget-testimonial-slider.min.css';
+		$version         = file_exists( $widget_css_file ) ? filemtime( $widget_css_file ) : CXF_VERSION;
 		wp_register_style(
 			'cxf--eb-widget-testimonial-slider',
 			$this->get_css_assets_url( 'cxf--eb-widget-testimonial-slider', null, true, true ),
@@ -99,15 +99,15 @@ class Module extends BaseModule {
 	 * @return void
 	 */
 	public function register_scripts() {
-		$widget_js_file =CXF_PATH. 'widgets/elementor/assets/js/cxf--eb-widget-testimonial-slider.min.js';
-		$version = file_exists( $widget_js_file ) ? filemtime( $widget_js_file ) : CXF_VERSION;
+		$widget_js_file = CXF_PATH . 'widgets/elementor/assets/js/cxf--eb-widget-testimonial-slider.min.js';
+		$version        = file_exists( $widget_js_file ) ? filemtime( $widget_js_file ) : CXF_VERSION;
 		wp_register_script(
 			'cxf--eb-widget-testimonial-slider',
 			$this->get_js_assets_url( 'cxf--eb-widget-testimonial-slider', null, true, true ),
 			array( 'cxf-eb-swiper' ),
 			$version,
 			array( 'in_footer' => true )
-		); 
+		);
 	}
 
 	/**
@@ -116,16 +116,19 @@ class Module extends BaseModule {
 	 * @return array
 	 */
 	public function register_skins() {
-		add_filter( "cxf/widget/skins_init", function( $skins ) {
-			$skins['cxf--eb-module-testimonial-slider'] = [
-				Skin_Testimonial_Two::class,
-				Skin_Testimonial_Three::class,
-				Skin_Testimonial_Four::class,
-				Skin_Testimonial_Five::class,
-				Skin_Testimonial_Six::class,
-				Skin_Testimonial_Seven::class,
-			];
-			return $skins;
-		});
-    }
+		add_filter(
+			'cxf/widget/skins_init',
+			function ( $skins ) {
+				$skins['cxf--eb-module-testimonial-slider'] = array(
+					Skin_Testimonial_Two::class,
+					Skin_Testimonial_Three::class,
+					Skin_Testimonial_Four::class,
+					Skin_Testimonial_Five::class,
+					Skin_Testimonial_Six::class,
+					Skin_Testimonial_Seven::class,
+				);
+				return $skins;
+			}
+		);
+	}
 }

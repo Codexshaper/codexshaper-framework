@@ -53,11 +53,11 @@ class Upload extends Field {
 			$library = array_filter( (array) $library );
 		}
 
-		$library = implode( ',', $library );
-		$hidden  = $this->value ? ' hidden' : '';
+		$library       = implode( ',', $library );
+		$hidden        = $this->value ? ' hidden' : '';
 		$allowed_mimes = array( 'jpg', 'jpeg', 'gif', 'png', 'svg', 'webp' );
 
-		if ( isset($args['preview']) && $args['preview'] ) {
+		if ( isset( $args['preview'] ) && $args['preview'] ) {
 
 			$preview_type   = '';
 			$preview_src    = '';
@@ -66,27 +66,27 @@ class Upload extends Field {
 			$preview_style  = '';
 			$preview_hidden = '';
 
-			if ($this->value) {
+			if ( $this->value ) {
 				$preview_type = strtolower( substr( strrchr( $this->value, '.' ), 1 ) );
 			}
 
-			if ($preview_type && in_array( $preview_type,  $allowed_mimes) ) {
-				$preview_src =  $this->value;
+			if ( $preview_type && in_array( $preview_type, $allowed_mimes ) ) {
+				$preview_src = $this->value;
 			}
 
-			if ($args['preview_width']) {
+			if ( $args['preview_width'] ) {
 				$preview_width = 'max-width:' . esc_attr( $args['preview_width'] ) . 'px;';
 			}
 
-			if ($args['preview_height']) {
+			if ( $args['preview_height'] ) {
 				$preview_height = 'max-height:' . esc_attr( $args['preview_height'] ) . 'px;';
 			}
 
-			if ($preview_width || $preview_height) {
+			if ( $preview_width || $preview_height ) {
 				$preview_style = ' style="' . esc_attr( $preview_width . $preview_height ) . '"';
 			}
 
-			if (! $preview_src) {
+			if ( ! $preview_src ) {
 				$preview_hidden = ' hidden';
 			}
 

@@ -45,8 +45,8 @@ class Field extends BaseField {
 		$errors     = $field['errors'] ?? array();
 
 		if ( ! $field_type ) {
-			$errors = "You must provide field type.";
-			cxf_view('builder.fields.error', compact('errors'));
+			$errors = 'You must provide field type.';
+			cxf_view( 'builder.fields.error', compact( 'errors' ) );
 			return;
 		}
 
@@ -55,7 +55,7 @@ class Field extends BaseField {
 
 		if ( ! class_exists( $field_class ) ) {
 			$errors = "Field doesn't exists.";
-			cxf_view('builder.fields.error', compact('errors'));
+			cxf_view( 'builder.fields.error', compact( 'errors' ) );
 			return;
 		}
 
@@ -115,7 +115,7 @@ class Field extends BaseField {
 			);
 
 		}
-		
+
 		cxf_view(
 			'builder.field',
 			compact(

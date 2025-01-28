@@ -10,4 +10,4 @@
  */
 
 ?>
-<i class="<?php echo esc_attr($settings['icon']); ?>" aria-hidden="true"></i>
+<i class="<?php echo esc_attr( $settings['icon'] ); ?>" aria-hidden="true"></i>

@@ -66,5 +66,4 @@ class BuilderServiceProvider extends ServiceProvider {
 		// Initialize admin menu.
 		Builder::instance();
 	}
-
 }

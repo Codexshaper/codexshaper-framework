@@ -14,7 +14,9 @@ namespace CodexShaper\Framework\Widgets\Elementor\Modules\TestimonialSlider\Skin
 
 use Elementor\Icons_Manager;
 
-if (! defined('ABSPATH')) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 /**
  * Skin_Testimonial_Three widget class
@@ -26,8 +28,7 @@ if (! defined('ABSPATH')) exit; // Exit if accessed directly
  * @link       https://github.com/codexshaper/codexshaper-framework
  * @since      1.0.0
  */
-class Skin_Testimonial_Three extends Skin_Testimonial_Base
-{
+class Skin_Testimonial_Three extends Skin_Testimonial_Base {
 
 	/**
 	 * Get skin ID.
@@ -37,8 +38,7 @@ class Skin_Testimonial_Three extends Skin_Testimonial_Base
 	 * @since 1.0.0
 	 * @access public
 	 */
-	public function get_id()
-	{
+	public function get_id() {
 		return 'skin-testimonial-three';
 	}
 
@@ -50,9 +50,8 @@ class Skin_Testimonial_Three extends Skin_Testimonial_Base
 	 * @since 1.0.0
 	 * @access public
 	 */
-	public function get_title()
-	{
-		return __('Testimonial Three', 'codexshaper-framework');
+	public function get_title() {
+		return __( 'Testimonial Three', 'codexshaper-framework' );
 	}
 
 	/**
@@ -75,21 +74,20 @@ class Skin_Testimonial_Three extends Skin_Testimonial_Base
 	 *
 	 * Written in PHP and used to generate the final HTML.
 	 *
-	 * @since 1.0.0 
+	 * @since 1.0.0
 	 * @access public
 	 */
-	public function render()
-	{
+	public function render() {
 
-		$settings          = $this->parent->get_settings_for_display();
-		$parent = $this->parent;
-		$data = [
+		$settings = $this->parent->get_settings_for_display();
+		$parent   = $this->parent;
+		$data     = array(
 			'class' => 'cdx-testimonial-slider-3',
-		];
+		);
 
-		$this->parent->add_slider_attributes($this->parent, $data);
+		$this->parent->add_slider_attributes( $this->parent, $data );
 		// Get star icon.
-		$star_icon    = ! empty($settings['star_icon']) ? Icons_Manager::try_get_icon_html(
+		$star_icon = ! empty( $settings['star_icon'] ) ? Icons_Manager::try_get_icon_html(
 			$settings['star_icon'],
 			array(
 				'aria-hidden' => 'true',
@@ -99,30 +97,30 @@ class Skin_Testimonial_Three extends Skin_Testimonial_Base
 		) : '';
 
 		$is_lazy_load = 'yes' === $settings['lazy_load'];
-		if (! empty($settings['items'])) {
-			foreach ($settings['items'] as $item) {
-				$image_size = $item['author_image_size'] ?? 'full';
-				$author_image = $item['testimonial_author_image'] ?? null;
-				$author_image_id = $author_image['id'] ?? null;
+		if ( ! empty( $settings['items'] ) ) {
+			foreach ( $settings['items'] as $item ) {
+				$image_size          = $item['author_image_size'] ?? 'full';
+				$author_image        = $item['testimonial_author_image'] ?? null;
+				$author_image_id     = $author_image['id'] ?? null;
 				$author_size_image[] = $this->get_size_image(
 					image_id: $author_image_id,
 					size: $image_size,
 					is_custom_lazy: $is_lazy_load,
-					attributes: [
-						'alt' => 'Image',
-						'class' => '',
+					attributes: array(
+						'alt'          => 'Image',
+						'class'        => '',
 						'fallback_url' => 0 < $author_image_id ? '' : $author_image['url'],
-					]
+					)
 				);
 			}
 		}
 
 		$data = array(
-			'parent' => $parent,
-			'settings' => $settings,
-			'star_icon' => $star_icon,
-			'author_size_image' => $author_size_image ?? null
+			'parent'            => $parent,
+			'settings'          => $settings,
+			'star_icon'         => $star_icon,
+			'author_size_image' => $author_size_image ?? null,
 		);
-		cxf_view('testimonial-slider.skins.testimonial-slider-three', $data);
+		cxf_view( 'testimonial-slider.skins.testimonial-slider-three', $data );
 	}
 }

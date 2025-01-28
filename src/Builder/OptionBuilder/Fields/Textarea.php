@@ -26,22 +26,22 @@ use CodexShaper\Framework\Foundation\Builder\Field;
  */
 class Textarea extends Field {
 
-        /**
-	 * Render the field
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return void
-	 */
+		/**
+		 * Render the field
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
+		 */
 	public function render() {
-                $name   = $this->get_name( $this->field, $this->identifier );
-                $value = $this->value;
-                $attributes = $this->get_attributes();
+				$name       = $this->get_name( $this->field, $this->identifier );
+				$value      = $this->value;
+				$attributes = $this->get_attributes();
 
-                $this->before();
+				$this->before();
 
-                cxf_view( 'builder.fields.textarea', compact( 'name', 'value', 'attributes' ) );
+				cxf_view( 'builder.fields.textarea', compact( 'name', 'value', 'attributes' ) );
 
-                $this->after();
+				$this->after();
 	}
 }

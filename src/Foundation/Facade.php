@@ -111,7 +111,7 @@ abstract class Facade {
 		$reflector = new ReflectionClass( $class );
 
 		if ( ! $reflector->isInstantiable() ) {
-			throw new Exception( esc_html( sprintf( 'Class %s cannot be instantiated.', $class )) );
+			throw new Exception( esc_html( sprintf( 'Class %s cannot be instantiated.', $class ) ) );
 		}
 
 		$constructor = $reflector->getConstructor();
@@ -148,7 +148,7 @@ abstract class Facade {
 			} elseif ( $parameter->isDefaultValueAvailable() ) {
 				$dependencies[] = $parameter->getDefaultValue();
 			} else {
-				throw new Exception( esc_html(sprintf('Unable to resolve dependency %s.', $name)) );
+				throw new Exception( esc_html( sprintf( 'Unable to resolve dependency %s.', $name ) ) );
 			}
 		}
 
@@ -171,7 +171,7 @@ abstract class Facade {
 	 * @throws Exception If accessor not defined.
 	 */
 	protected static function getFacadeAccessor() {
-		throw new Exception( esc_html('Facade does not implement getFacadeAccessor method.') );
+		throw new Exception( esc_html( 'Facade does not implement getFacadeAccessor method.' ) );
 	}
 
 	/**
@@ -194,6 +194,6 @@ abstract class Facade {
 			return $instance::$method( ...$args );
 		}
 
-		throw new Exception( esc_html(sprintf('Method %s does not exist on the facade.', $method)) );
+		throw new Exception( esc_html( sprintf( 'Method %s does not exist on the facade.', $method ) ) );
 	}
 }

@@ -46,26 +46,26 @@ class Section {
 		 * @param array $allowed_html Allowed html.
 		 */
 		$allowed_html = apply_filters(
-			'cxf/builder/section/allowed_html', 
+			'cxf/builder/section/allowed_html',
 			array(
-				'p' => array(
-					'class' => array()
-				), 
-				'a' => array(
-					'href' => array(), 
-					'target' => array()
-				), 
-				'mark' => array()
+				'p'    => array(
+					'class' => array(),
+				),
+				'a'    => array(
+					'href'   => array(),
+					'target' => array(),
+				),
+				'mark' => array(),
 			)
 		);
 
 		cxf_view(
-			'builder.fields.section', 
+			'builder.fields.section',
 			compact(
 				'section',
-				'allowed_html', 
-				'options', 
-				'post_id', 
+				'allowed_html',
+				'options',
+				'post_id',
 				'identifier'
 			)
 		);
