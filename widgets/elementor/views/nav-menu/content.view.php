@@ -11,8 +11,8 @@
 
 ?>
 <div <?php echo wp_kses_post( $wrapper ?? '' ); ?>>
-	<?php if ($show_mobile_menu) : ?>
-		<button type="button" class="cxf-menu-hamburger" aria-label="Offcanvas Button" data-breakpoint="<?php echo esc_attr($breakpoint); ?>" data-id="<?php echo esc_attr($id); ?>">
+	<?php if ( $show_mobile_menu ) : ?>
+		<button type="button" class="cxf-menu-hamburger" aria-label="Offcanvas Button" data-breakpoint="<?php echo esc_attr( $breakpoint ); ?>" data-id="<?php echo esc_attr( $id ); ?>">
 			<?php echo wp_kses( $menu_hamburger_icon, cxf_get_svg_rules() ); ?>
 		</button>
 	<?php endif; ?>
