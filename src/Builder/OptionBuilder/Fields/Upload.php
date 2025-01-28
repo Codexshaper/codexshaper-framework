@@ -90,15 +90,6 @@ class Upload extends Field {
 				$preview_hidden = ' hidden';
 			}
 
-			cxf_view(
-				'builder.fields.upload.preview',
-				array(
-					'src'    => $preview_src,
-					'style'  => $preview_style,
-					'hidden' => $preview_hidden,
-				)
-			);
-
 		}
 
 		cxf_view(

@@ -521,7 +521,6 @@ class Nav_Menu extends Widget {
 			array(
 				'name'     => 'menu_item_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'exclude'  => array( 'image' ),
 				'selector' => '{{WRAPPER}} .cxf-menu-nav .cxf-menu > .menu-item > .cxf-menu-link',
 			)
 		);
@@ -552,7 +551,6 @@ class Nav_Menu extends Widget {
 			array(
 				'name'     => 'menu_item_hover_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'exclude'  => array( 'image' ),
 				'selector' => '{{WRAPPER}} .cxf-menu-nav .cxf-menu > .menu-item > .cxf-menu-link:hover, {{WRAPPER}} .cxf-menu-nav .cxf-menu .cxf-menu-link:focus',
 			)
 		);
@@ -597,7 +595,7 @@ class Nav_Menu extends Widget {
 				array(
 					'name'     => 'menu_item_active_background',
 					'types'    => array( 'classic', 'gradient' ),
-					'exclude'  => array( 'image' ),
+
 					'selector' => '{{WRAPPER}} .cxf-menu-wrapper:not(.mobile-menu) .cxf-menu >  .menu-item.current-menu-item > .cxf-menu-link',
 				)
 			);
@@ -773,7 +771,6 @@ class Nav_Menu extends Widget {
 			array(
 				'name'     => 'submenu_item_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'exclude'  => array( 'image' ),
 				'selector' => '{{WRAPPER}} .cxf-menu-wrapper:not(.mobile-menu) .cxf-menu-nav .cxf-menu 
 				.menu-item-has-children:not(.cxf-mega-menu):hover > .sub-menu .menu-item .cxf-menu-link',
 			)
@@ -808,7 +805,6 @@ class Nav_Menu extends Widget {
 			array(
 				'name'     => 'submenu_item_hover_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'exclude'  => array( 'image' ),
 				'selector' => '{{WRAPPER}} cxf-menu-wrapper:not(.mobile-menu) .cxf-menu-nav .cxf-menu 
 					 .menu-item-has-children:not(.cxf-mega-menu):hover > .sub-menu .menu-item .cxf-menu-link:hover, 
 				{{WRAPPER}} cxf-menu-wrapper:not(.mobile-menu) .cxf-menu-nav .cxf-menu 
@@ -1279,7 +1275,6 @@ class Nav_Menu extends Widget {
 			array(
 				'name'     => 'mobile_menu_item_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'exclude'  => array( 'image' ),
 				'selector' => '{{WRAPPER}} .cxf-menu-wrapper.mobile-menu .cxf-menu > .menu-item > .cxf-menu-link',
 			)
 		);
@@ -1309,7 +1304,6 @@ class Nav_Menu extends Widget {
 			array(
 				'name'     => 'mobile_menu_item_hover_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'exclude'  => array( 'image' ),
 				'selector' => '{{WRAPPER}} .cxf-menu-wrapper.mobile-menu .menu-item .cxf-menu-link:hover, {{WRAPPER}} .cxf-menu-wrapper.mobile-menu .cxf-menu > .menu-item > .cxf-menu-link:focus',
 			)
 		);
@@ -1408,7 +1402,6 @@ class Nav_Menu extends Widget {
 			array(
 				'name'     => 'mobile_sub_menu_item_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'exclude'  => array( 'image' ),
 				'selector' => '{{WRAPPER}} .cxf-menu-wrapper.mobile-menu .menu-item.menu-item-has-children .sub-menu .cxf-menu-link',
 			)
 		);
@@ -1438,7 +1431,6 @@ class Nav_Menu extends Widget {
 			array(
 				'name'     => 'mobile_sub_menu_item_hover_background',
 				'types'    => array( 'classic', 'gradient' ),
-				'exclude'  => array( 'image' ),
 				'selector' => '{{WRAPPER}} .cxf-menu-wrapper.mobile-menu .menu-item.menu-item-has-children .sub-menu .cxf-menu-link:hover, {{WRAPPER}} .cxf-menu-wrapper.mobile-menu .menu-item.menu-item-has-children .sub-menu .cxf-menu-link:focus',
 			)
 		);

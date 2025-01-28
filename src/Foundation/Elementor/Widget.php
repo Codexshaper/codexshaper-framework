@@ -12,9 +12,7 @@
 
 namespace CodexShaper\Framework\Foundation\Elementor;
 
-use CodexShaper\Framework\Foundation\Traits\Control\Fields as ControlFields;
 use CodexShaper\Framework\Foundation\Traits\Image\Helper as ImageHelper;
-use CodexShaper\Framework\Foundation\Traits\Pagination\Pagination;
 use Elementor\Plugin;
 use Elementor\Widget_Base;
 
@@ -36,8 +34,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 abstract class Widget extends Widget_Base {
 
 	use ImageHelper;
-	use ControlFields;
-	use Pagination;
 
 	/**
 	 * Get categories
@@ -84,12 +80,8 @@ abstract class Widget extends Widget_Base {
 				'orderby'          => 'post_date',
 				'order'            => 'DESC',
 				'include'          => '',
-				'exclude'          => '',
-				'meta_key'         => '',
-				'meta_value'       => '',
 				'post_type'        => $post_type,
 				'post_status'      => 'publish',
-				'suppress_filters' => true,
 			);
 
 			$parsed_args = wp_parse_args( $args, $defaults );

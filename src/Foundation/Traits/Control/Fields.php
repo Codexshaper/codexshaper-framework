@@ -6,7 +6,7 @@
  * @package    CodexShaper_Framework
  * @author     CodexShaper <info@codexshaper.com>
  * @license    https://www.gnu.org/licenses/gpl-2.0.html
- * @link       https://github.com/codexshaper/codexshaper-framework
+ * @link       https://codexshaper.com
  * @since      1.0.0
  */
 
@@ -29,7 +29,7 @@ use Elementor\Group_Control_Typography;
  * @package    CodexShaper_Framework
  * @author     CodexShaper <info@codexshaper.com>
  * @license    https://www.gnu.org/licenses/gpl-2.0.html
- * @link       https://github.com/codexshaper/codexshaper-framework
+ * @link       https://codexshaper.com
  * @since      1.0.0
  */
 trait Fields {

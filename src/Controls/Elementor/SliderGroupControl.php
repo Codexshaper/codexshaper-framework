@@ -6,7 +6,7 @@
  * @package    CodexShaper_Framework
  * @author     CodexShaper <info@codexshaper.com>
  * @license    https://www.gnu.org/licenses/gpl-2.0.html
- * @link       https://github.com/codexshaper/codexshaper-framework
+ * @link       https://codexshaper.com
  * @since      1.0.0
  */
 
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package    CodexShaper_Framework
  * @author     CodexShaper <info@codexshaper.com>
  * @license    https://www.gnu.org/licenses/gpl-2.0.html
- * @link       https://github.com/codexshaper/codexshaper-framework
+ * @link       https://codexshaper.com
  * @since      1.0.0
  */
 class SliderGroupControl extends Group_Control_Base {

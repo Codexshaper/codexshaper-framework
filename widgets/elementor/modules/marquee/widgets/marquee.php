@@ -369,11 +369,6 @@ class Marquee extends SliderWidget {
 			'marquee_image_hover',
 			options: array(
 				'selector' => '{{WRAPPER}} .cxf--marquee-image:hover',
-				'exclude'  => array(
-					'marquee_image_hover_image_width',
-					'marquee_image_hover_image_height',
-					'marquee_image_hover_image_max_width',
-				),
 			)
 		);
 

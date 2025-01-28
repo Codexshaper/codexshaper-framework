@@ -88,6 +88,7 @@ class Module extends BaseModule {
 			'cxf--nav-menu',
 			$this->get_js_assets_url( 'cxf--nav-menu', null, true, true ),
 			array(),
+			true,
 			$version,
 		);
 	}

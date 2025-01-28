@@ -11,21 +11,6 @@
  * @since      1.0.0
  */
 
-if ( ! function_exists( 'cxf' ) ) {
-
-	/**
-	 * Get core helper function
-	 *
-	 * @package CodexShaper_Framework
-	 */
-	function cxf() {
-		if ( ! class_exists( '\CodexShaper\Framework\Application' ) ) {
-			return;
-		}
-		return new CodexShaper\Framework\Application();
-	}
-}
-
 if ( ! function_exists( 'cxf_config' ) ) {
 
 	/**
@@ -38,37 +23,6 @@ if ( ! function_exists( 'cxf_config' ) ) {
 			return;
 		}
 		return CodexShaper\Framework\Support\Facades\Config::get( $name );
-	}
-}
-
-if ( ! function_exists( 'cxf_helper' ) ) {
-
-	/**
-	 * Get core helper function
-	 *
-	 * @package CodexShaper_Framework
-	 */
-	function cxf_helper() {
-		if ( ! class_exists( '\CodexShaper\Framework\Core\Helper' ) ) {
-			return;
-		}
-		return CodexShaper\Framework\Support\Facades\Helper::instance();
-	}
-}
-
-if ( ! function_exists( 'cxf_option_builder' ) ) {
-
-	/**
-	 * Get page by page title
-	 *
-	 * @package CodexShaper_Framework
-	 */
-	function cxf_option_builder() {
-		if ( ! class_exists( '\CodexShaper\Framework\Builder\COB' ) ) {
-			return;
-		}
-
-		return CodexShaper\Framework\Builder\COB::instance();
 	}
 }
 
@@ -114,76 +68,6 @@ if ( ! function_exists( 'cxf_get_page_by_title' ) ) {
 		);
 
 		return $query->post ?? null;
-	}
-}
-
-if ( ! function_exists( 'cxf_query' ) ) {
-
-	/**
-	 * Get query by options
-	 *
-	 * @param string|array $options Query options.
-	 *
-	 * @package CodexShaper_Framework
-	 */
-	function cxf_query( $options = '' ) {
-		return new CodexShaper\Framework\Builder\Database\Query( $options );
-	}
-}
-
-if ( ! function_exists( 'cxf_reset_query' ) ) {
-
-	/**
-	 * Reset current query
-	 *
-	 * @package CodexShaper_Framework
-	 */
-	function cxf_reset_query() {
-		wp_reset_query();
-	}
-}
-
-/**
- * Retrieves an array of the elementor save template.
- *
- * For more information on the accepted arguments, see the
- * {@link https://developer.wordpress.org/reference/classes/wp_query/
- * WP_Query} documentation in the Developer Handbook.
- *
- * @see WP_Query::parse_query()
- * @see WP_Query
- * @since 1.0.0
- *
- * @param array $args
- *
- * @return WP_Post[]|int[] Array of post objects or post IDs.
- */
-if ( ! function_exists( 'cxf_get_elementor_templates' ) ) {
-
-	function cxf_get_elementor_templates( $args = null ) {
-		$templates = array();
-
-		$defaults = array(
-			'post_type'   => 'elementor_library',
-			'post_status' => 'publish',
-			'numberposts' => - 1,
-		);
-
-		if ( isset( $args['post_type'] ) ) {
-			unset( $args['post_type'] ); // Post type always `elementor_library`
-		}
-
-		$parsed_args = wp_parse_args( $args, $defaults );
-
-		$posts = cxf_query()->get_post_types( $parsed_args );
-
-		if ( $posts ) {
-			foreach ( $posts as $post ) {
-				$templates[ $post->ID ] = esc_html( $post->post_title );
-			}
-		}
-
-		return $templates;
 	}
 }
 

@@ -610,7 +610,6 @@ class Button extends Widget {
 			array(
 				'name'      => 'btn_background',
 				'types'     => array( 'classic', 'gradient' ),
-				'exclude'   => array( 'image' ),
 				'selector'  => '{{WRAPPER}} .cxf--btn > *:not(.cxf--btn-mask, .cxf--btn-ellipse), {{WRAPPER}} .cxf--btn > *.cxf--btn-mask:after, {{WRAPPER}} .cxf--btn > *.cxf--btn-ellipse:before',
 				'condition' => array( 'cxf_button_style!' => 'underline' ),
 			)
@@ -654,7 +653,6 @@ class Button extends Widget {
 			array(
 				'name'      => 'btn_hover_background',
 				'types'     => array( 'classic', 'gradient' ),
-				'exclude'   => array( 'image' ),
 				'selector'  => '{{WRAPPER}} .cxf--btn > *:not(.cxf--btn-mask, .btn-item, .btn-parallal-border, .btn-border-cross, .cxf--btn-ellipse):after,{{WRAPPER}} .cxf--btn > *:not(.cxf--btn-mask, .btn-item, .btn-parallal-border, .btn-border-cross, .cxf--btn-ellipse):before, {{WRAPPER}} .cxf--btn > *.cxf--btn-mask, {{WRAPPER}} .cxf--btn span, {{WRAPPER}} .cxf--btn .btn-border-cross:hover, {{WRAPPER}} .cxf--btn .btn-parallal-border:hover, {{WRAPPER}} .cxf--btn > *.cxf--btn-ellipse:hover:before,{{WRAPPER}} .cxf--btn > *.btn-hover-none:hover',
 				'condition' => array( 'cxf_button_style!' => 'underline' ),
 			)

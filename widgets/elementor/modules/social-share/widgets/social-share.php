@@ -550,10 +550,6 @@ class Social_Share extends Widget {
 			'share_title_text_hover',
 			options: array(
 				'selector' => '{{WRAPPER}} .cxf--social-share-title',
-				'exclude'  => array(
-					'Group_Control_Text_Stroke',
-					'Group_Control_Text_Shadow',
-				),
 			)
 		);
 

@@ -13,6 +13,7 @@
 namespace CodexShaper\Framework\Widgets\Elementor\Modules\FeaturedImage\Widgets;
 
 use CodexShaper\Framework\Foundation\Elementor\Widget;
+use CodexShaper\Framework\Foundation\Traits\Control\Fields;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Group_Control_Image_Size;
@@ -34,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since      1.0.0
  */
 class Featured_Image extends Widget {
-
+	use Fields;
 	/**
 	 * Get widget name.
 	 *
@@ -243,11 +244,6 @@ class Featured_Image extends Widget {
 			'featured_image',
 			options: array(
 				'selector' => '{{WRAPPER}} .cxf-featured-image-wrapper .featured-image',
-				'exclude'  => array(
-					'featured_image_transition',
-					'featured_image_opacity',
-					Group_Control_Css_Filter::get_type(),
-				),
 			)
 		);
 

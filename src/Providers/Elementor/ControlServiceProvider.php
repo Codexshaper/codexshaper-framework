@@ -6,14 +6,12 @@
  * @package    CodexShaper_Framework
  * @author     CodexShaper <info@codexshaper.com>
  * @license    https://www.gnu.org/licenses/gpl-2.0.html
- * @link       https://github.com/codexshaper/codexshaper-framework
+ * @link       https://codexshaper.com
  * @since      1.0.0
  */
 
 namespace CodexShaper\Framework\Providers\Elementor;
 
-use CodexShaper\Framework\Controls\Elementor\PaginationGroupControl;
-use CodexShaper\Framework\Controls\Elementor\QueryGroupControl;
 use CodexShaper\Framework\Controls\Elementor\SliderGroupControl;
 use CodexShaper\Framework\Foundation\ServiceProvider;
 use Elementor\Group_Control_Base;
@@ -30,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package    CodexShaper_Framework
  * @author     CodexShaper <info@codexshaper.com>
  * @license    https://www.gnu.org/licenses/gpl-2.0.html
- * @link       https://github.com/codexshaper/codexshaper-framework
+ * @link       https://codexshaper.com
  * @since      1.0.0
  */
 class ControlServiceProvider extends ServiceProvider {
@@ -42,9 +40,7 @@ class ControlServiceProvider extends ServiceProvider {
 	 */
 	public function get_controls() {
 		return array(
-			QueryGroupControl::class,
 			SliderGroupControl::class,
-			PaginationGroupControl::class,
 		);
 	}
 

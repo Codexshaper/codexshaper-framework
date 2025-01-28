@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @link       https://github.com/codexshaper/codexshaper-framework
  * @since      1.0.0
  */
-abstract class SliderWidget extends QueryWidget {
+abstract class SliderWidget extends Widget {
 
 	use SliderHelper;
 
@@ -56,7 +56,6 @@ abstract class SliderWidget extends QueryWidget {
 			SliderGroupControl::get_type(),
 			array(
 				'name'    => $this->slider_control_prefix,
-				'exclude' => array(),
 			)
 		);
 

@@ -15,7 +15,6 @@ namespace CodexShaper\Framework\Providers;
 use CodexShaper\Framework\Foundation\ServiceProvider;
 use CodexShaper\Framework\Foundation\Traits\Hook;
 use CodexShaper\Framework\Providers\Elementor\ControlServiceProvider;
-use CodexShaper\Framework\Providers\Elementor\ExtensionServiceProvider;
 use CodexShaper\Framework\Providers\Elementor\ModuleServiceProvider;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -90,7 +89,6 @@ class ElementorServiceProvider extends ServiceProvider {
 				array(
 					ControlServiceProvider::class,
 					ModuleServiceProvider::class,
-					ExtensionServiceProvider::class,
 				)
 			);
 			add_action( 'elementor/init', array( $this, 'init' ) );

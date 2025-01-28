@@ -103,7 +103,7 @@ class AssetsServiceProvider extends ServiceProvider {
 	public function cxf_enqueue_scripts() {
 
 		// Localize. Send data from PHP to Javascript.
-		wp_enqueue_script( 'cxf--localize', CXF_URL . 'assets/js/cxf--localize.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'cxf--localize', CXF_URL . 'assets/js/cxf--localize.js', array( 'jquery' ), CXF_VERSION, true );
 		$data = apply_filters(
 			'cxf_localize_data',
 			array(
@@ -233,7 +233,7 @@ class AssetsServiceProvider extends ServiceProvider {
 		// Added wp media.
 		wp_enqueue_media();
 
-		wp_enqueue_script( 'cxf--admin-localize', CXF_URL . 'assets/js/cxf--admin-localize.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'cxf--admin-localize', CXF_URL . 'assets/js/cxf--admin-localize.js', array( 'jquery' ), CXF_VERSION, true );
 		$data = apply_filters(
 			'cxf_admin_localize_data',
 			array(
